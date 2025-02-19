@@ -42,9 +42,6 @@ var PORT = nconf.get("http:port");
 // ---[ DATABASE CONNECTION ]--------------------------------------------------
 
 mongoose.Promise = global.Promise;
-nconf.each((value, key) => {
-    console.log(`${key}: ${value}`);
-});
 mongoose.connect(nconf.get("db:url"), {
   useMongoClient: true,
   dbName: nconf.get("db:name"),
