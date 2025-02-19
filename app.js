@@ -41,15 +41,29 @@ var PORT = nconf.get("http:port");
 
 // ---[ DATABASE CONNECTION ]--------------------------------------------------
 
-mongoose.Promise = global.Promise;
+//mongoose.Promise = global.Promise;
+//mongoose.connect(nconf.get("db:url"), {
+//  useMongoClient: true,
+//  dbName: nconf.get("db:name"),
+//  authSource: nconf.get("db:name"),
+//  auth: {
+//    user: nconf.get("db:username"),
+//    password: nconf.get("db:password"),
+//  }
+//});
+
 mongoose.connect(nconf.get("db:url"), {
-  useMongoClient: true,
-  dbName: nconf.get("db:name"),
-  authSource: nconf.get("db:name"),
-  auth: {
+    dbName: nconf.get("db:name"),
     user: nconf.get("db:username"),
-    password: nconf.get("db:password"),
-  }
+    pass: nconf.get("db:password"),
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => {
+    console.log('数据库连接成功');
+})
+.catch(err => {
+    console.error('数据库连接失败', err);
 });
 
 // ---[ EXPRESS SETUP ]----------------------------------------------------------------------------
