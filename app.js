@@ -51,19 +51,15 @@ var PORT = nconf.get("http:port");
 //    password: nconf.get("db:password"),
 //  }
 //});
+const dbUrl = `${nconf.get("db:url")}/${nconf.get("db:name")}`;
 
-mongoose.connect(nconf.get("db:url"), {
-    dbName: nconf.get("db:name"),
+mongoose.connect(dbUrl, {
+  useMongoClient: true,
+  auth: {
+    authSource: nconf.get("db:name"),
     user: nconf.get("db:username"),
-    pass: nconf.get("db:password"),
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => {
-    console.log('数据库连接成功');
-})
-.catch(err => {
-    console.error('数据库连接失败', err);
+    password: nconf.get("db:password"),
+  },
 });
 
 // ---[ EXPRESS SETUP ]----------------------------------------------------------------------------
