@@ -51,15 +51,16 @@ var PORT = nconf.get("http:port");
 //    password: nconf.get("db:password"),
 //  }
 //});
-const dbUrl = `${nconf.get("db:url")}/${nconf.get("db:name")}`;
+const dbName = nconf.get("db:name")
+const dbUrl = nconf.get("db:url")?.replace("/?", `/${dbName}?`);
 
 mongoose.connect(dbUrl, {
-  useMongoClient: true,
-  auth: {
-    authSource: nconf.get("db:name"),
-    user: nconf.get("db:username"),
-    password: nconf.get("db:password"),
-  },
+    useMongoClient: true,
+    auth: {
+        authSource: dbName,
+        user: nconf.get("db:username"),
+        password: nconf.get("db:password"),
+    },
 }).catch(err=>{
     console.error(err)
 });
@@ -797,7 +798,7 @@ api
           assignment = await Assignment.create({
             _id: req.params.assignmentId,
             _hitId: req.params.hitId,
-            workerId: ' ',
+            workerId: req.query.workerId,
             ipAddress: req.headers["x-forwarded-for"] || req.connection.remoteAddress,
             userAgent: req.headers["user-agent"],
             condition: req.query.condition,

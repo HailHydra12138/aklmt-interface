@@ -99,7 +99,8 @@ var loadHit = async function (hit) {
 
 var loadAssignment = async function (hit) {
   return $.ajax({
-    url: "../../hits/" + hit.hitId + "/assignments/" + hit.assignmentId + `?condition=${getQueryStringParam("condition")}`,
+    url: "../../hits/" + hit.hitId + "/assignments/" + hit.assignmentId +
+        `?condition=${getQueryStringParam("condition")}&workerId=${getQueryStringParam("workerId")}`,
     type: "GET",
   })
     .promise()
@@ -209,7 +210,6 @@ var getQueryStringParam = function (name, defaultValue)
 };
 
 var returnToTurk = function ({ offline, local, turkSubmitTo, assignmentId, token }) {
-    console.log({offline, local, turkSubmitTo, assignmentId, token });
     if (offline || local)
     {
         window.alert('(OFFLINE MODE) Return to Turk; token: ' + hit.token);
