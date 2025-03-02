@@ -35,7 +35,6 @@ function getOfflineHIT() {
     turkSubmitTo: null,
     workerId: null,
     offline: true,
-    skipIntro: false,
     preview: false,
     details: null,
   };
@@ -100,7 +99,7 @@ var loadHit = async function (hit) {
 
 var loadAssignment = async function (hit) {
   return $.ajax({
-    url: "../../hits/" + hit.hitId + "/assignments/" + hit.assignmentId,
+    url: "../../hits/" + hit.hitId + "/assignments/" + hit.assignmentId + `?condition=${getQueryStringParam("condition")}`,
     type: "GET",
   })
     .promise()
@@ -210,28 +209,13 @@ var getQueryStringParam = function (name, defaultValue)
 };
 
 var returnToTurk = function ({ offline, local, turkSubmitTo, assignmentId, token }) {
-
+    console.log({offline, local, turkSubmitTo, assignmentId, token });
     if (offline || local)
     {
         window.alert('(OFFLINE MODE) Return to Turk; token: ' + hit.token);
+        return
     }
-
-    else
-    {
-        var form = document.createElement('form');
-        var assignmentIdInput = document.createElement('input');
-        var tokenInput = document.createElement('input');
-        form.method = 'POST';
-        form.action = turkSubmitTo + '/mturk/externalSubmit';
-        assignmentIdInput.name = 'assignmentId';
-        assignmentIdInput.value = assignmentId;
-        tokenInput.name = 'token';
-        tokenInput.value = token;
-        form.appendChild(assignmentIdInput);
-        form.appendChild(tokenInput);
-        document.body.appendChild(form);
-        form.submit();
-    }
+    location.href = `https://app.prolific.com/submissions/complete?cc=${turkSubmitTo}`;
 };
 
 var bootstrap = async function () {
@@ -327,7 +311,6 @@ var bootstrap = async function () {
     } else if (assignment.workerId !== hit.workerId) {
       assignment = await reassignAssignment(hit);
     } else if (assignment.completionTime) {
-      assignment = null;
       returnToTurk({
         ...hit,
         token: assignment.token,

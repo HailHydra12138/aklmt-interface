@@ -60,6 +60,8 @@ mongoose.connect(dbUrl, {
     user: nconf.get("db:username"),
     password: nconf.get("db:password"),
   },
+}).catch(err=>{
+    console.error(err)
 });
 
 // ---[ EXPRESS SETUP ]----------------------------------------------------------------------------
@@ -194,17 +196,29 @@ api
 
 api
   .route("/hits/:hitId")
-  .get(function (req, res) {
-    HIT.findOne(
-      {
-        _id: req.params.hitId,
-      },
-      function (err, data) {
-        if (err) res.status(502).send({ messages: [err] });
-        else if (!data) res.status(404).send();
-        else res.json(data);
+  .get(async function (req, res) {
+      try{
+          let hit = await HIT.findOne({ _id: req.params.hitId });
+          if (!hit) {
+              hit = await HIT.create({
+                  _id: req.params.hitId,
+                  title: 'Title_' + guid.raw(),
+                  description: 'Default Description',
+                  internalName: 'Default Internal Name',
+                  lifetime: 0,
+                  duration: 0,
+                  assignments: 24,
+                  conditions: req.body.conditions,
+                  sandbox: false,
+                  creationTime: new Date(),
+                  basePayment: 0,
+              })
+          }
+          res.json(hit);
+      }catch (err){
+          console.error(err)
+          res.status(502).send({ messages: [err] });
       }
-    );
   })
   .delete(auth, function (req, res) {
     Assignment.remove(
@@ -774,17 +788,27 @@ api.route("/hits/:hitId/assignments").get(auth, function (req, res) {
 
 api
   .route("/hits/:hitId/assignments/:assignmentId")
-  .get(function (req, res) {
-    Assignment.findOne(
-      {
-        _id: req.params.assignmentId,
-      },
-      function (err, data) {
-        if (err) res.status(502).send({ messages: [err] });
-        else if (!data) res.status(404).send();
-        else res.json(data);
+  .get(async function (req, res) {
+      try{
+        let assignment = await Assignment.findOne({
+          _id: req.params.assignmentId,
+        })
+        if(!assignment){
+          assignment = await Assignment.create({
+            _id: req.params.assignmentId,
+            _hitId: req.params.hitId,
+            workerId: ' ',
+            ipAddress: req.headers["x-forwarded-for"] || req.connection.remoteAddress,
+            userAgent: req.headers["user-agent"],
+            condition: req.query.condition,
+            startTime: Date.now(),
+          })
+        }
+        res.json(assignment);
+      }catch (err){
+          console.error(err);
+          res.status(502).send({ messages: [err] });
       }
-    );
   })
   .put(function (req, res) {
     HIT.findOne(

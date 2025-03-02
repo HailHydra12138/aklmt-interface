@@ -1239,7 +1239,6 @@ export var launchExperiment = async function (
 
       window.setTimeout(() => {
         if (shouldEndExperiment()) {
-          hasExperimentEnded = true;
           $("#experiment-page").fadeOut(500, function () {
             $("#survey-page").clearQueue().fadeIn(500);
             hitData.surveyTime = new Date().getTime();
@@ -1428,7 +1427,7 @@ export var launchExperiment = async function (
       }
     });
 
-    if (missing) {
+/*    if (missing) {
       window.alert(
         "Please answer all survey questions and " +
           "then click the Submit Results button."
@@ -1442,7 +1441,7 @@ export var launchExperiment = async function (
           "enter an age between 18 and 100."
       );
       return;
-    }
+    }*/
 
     Object.keys(sd).forEach(function (v) {
       hitData.surveyData.push(v + "=" + sd[v]);
