@@ -178,23 +178,25 @@ export const instructions = (...args) => `
 
 export function consent(...args) {
   return `
-    <div class="consent-wrapper">
-      <h4 class="mt-2">Consent Form</h4>
-      <h6><b>Purpose of research:</b></h6>
-      <p>The purpose of this research is to study how people make predictions.</p>
-
-      <h6><b>What you will do in this research:</b></h6>
-      <p>You will make forecasts about future realizations of a random process on a web-based platform, followed by a few demographics questions. There are ${totalRounds(...args)} rounds, and you will make ${predictionCount(...args)} predictions per round. You may exit the platform at any time or skip some questions without penalty.</p>
-
-      <h6><b>Time required:</b></h6>
-      <p>It takes about ${estimatedTime(...args)} minutes to complete the study. You are free to spend as much time as you like up to 60 minutes.</p>
-
-      <h6><b>Risks:</b></h6>
-      <p>There are no anticipated risks associated with participating in this
-      study.</p>
-
-      <h6><b>Compensation:</b></h6>
-      <p>You will receive <b>base payment</b> of <b>$${basePayment(...args)}</b>. You will also receive a <b> bonus payment</b>. The <b>bonus payment</b> will be on the scale of <b>$${estimatedBonus(...args)}</b>, but the precise amount will depend on the accuracy of your predictions.</p>
-    </div>
+    var Consentform = {
+      type: jsPsychSurveyHtmlForm,
+      html: '<div style="text-align: center; font-size: 22px; font-weight: bold;">'+
+      "Consent Form<br><br><br>"+
+      "</div>"+
+      '<div style="text-align: left; font-size: 18px;">'+
+        '<strong>Title of Project</strong>: Exploring overreaction in prediction tasks<br>'+
+        '<strong>Name of Researcher(s)</strong>: Jenny Zhou<br>'+
+        '<strong>Name of Supervisors</strong>: Adam Sanborn<br>'+
+        '<strong>By checking the box below, I confirm that</strong>:<br>'+
+        '1. I have read and understand the information sheet for the above study. I have had the opportunity to consider the information, ask questions by contacting the researcher (<a href="mailto:yuqi.zhou@warwick.ac.uk">yuqi.zhou@warwick.ac.uk</a>) and have had these answered satisfactorily.<br>'+
+        '2. I understand that my participation is voluntary and that I am free to withdraw at any time by closing the browser without giving any reason, without my legal rights being affected.<br>'+
+        '3. I understand that my data collected during the study may be looked at by the researcher (Jenny Zhou) and their supervisor (Prof. Adam Sanborn) from the University of Warwick. I give permission for these individuals to access my data.<br>'+
+        '4. I understand that my data may be used in future research.<br>'+
+        '5. I confirm that I am over 18 years of age.<br>'+
+        '6. I agree to take part in the above study.<br><br>'+
+        '<input type="checkbox" name="consent" id="consent" value="consent" required> <label for="consent">I have read and I agree with the points above.</label><br>' +
+        '</div>',
+      button_label: 'Continue',
+    };
   `;
 }
