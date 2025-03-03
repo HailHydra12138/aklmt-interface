@@ -105,12 +105,18 @@ const predictInstructions = (...args) => {
 
 const initialInstructions = (...args) => `
   <p>
-    You are invited to participate in a research study exploring how people make predictions. To be eligible for participation, individuals must be 18 years of age or older, possess a proficient level of English to comprehend the study materials, and provide informed consent to take part in the research.
+    <strong>Title of Project</strong>: Exploring overreaction in prediction tasks<br>
+    <strong>Name of Researcher</strong>: Jenny Zhou<br>
+    <strong>Name of Supervisor</strong>: Prof. Adam Sanborn<br>
+    <strong>Invitation</strong><br>
   </p>
   <p>
-    This study has been reviewed and approved by the Department of Psychology Research Ethics Committee at the University of Warwick.
+    You are invited to participate in a research study exploring how people make predictions. To be eligible for participation, individuals must be 18 years of age or older, possess a proficient level of English to comprehend the study materials, and provide informed consent to take part in the research.<br><br>
+    This study has been reviewed and approved by the Department of Psychology Research Ethics Committee at the University of Warwick.<br><br>
+    Please take the time to read the following information carefully. Please get in touch if there is anything that is not clear or if you would like more information.<br><br>
   </p>
 `;
+
 const paymentInstructions = (...args) => `
   <p>
     You will receive base payment of <b>$${basePayment(...args)}</b>. You will also receive a <b>bonus payment</b>. The typical bonus amount will be around <b>$${estimatedBonus(...args)}</b>, but the precise amount will depend on the accuracy of your predictions. ${additionalTasks(
