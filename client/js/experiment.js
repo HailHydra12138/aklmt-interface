@@ -1,4 +1,4 @@
-import { consent, instructions } from './instructions';
+import { consent, instructions, instructions2 } from './instructions';
 import { calculateBonus, totalBonus, scoreForPrediction, getForecastModes, totalTaskScore } from './price';
 import { beforeTaskSurvey, afterInstructionsSurvey, shouldRunAfterInstructionsSurvey, shouldRunBeforeTaskSurvey } from './survey';
 import roundTexts from "./round-texts";
@@ -940,7 +940,8 @@ export var launchExperiment = async function (
   }
 
   function populateInstructions () {
-    $("#instruction-page").prepend(instructions(tasks, basePayment, condition))
+    $("#instruction-page").prepend(instructions(tasks, basePayment, condition));
+     $("#instruction2-page").prepend(instructions2(tasks, basePayment, condition))
   }
 
   function startNextTask() {
