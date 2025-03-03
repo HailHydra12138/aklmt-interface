@@ -251,8 +251,7 @@ export function consent(...args) {
 
 export const instructions = (...args) => `
   <div class="consent-wrapper mt-3">
-    ${initialInstructions(...args)}
-    <!-- ${paymentInstructions(...args)} -->
+    ${paymentInstructions(...args)} 
     <!-- ${studyInstructions(...args)} -->
     <!-- ${scoreInstructions(...args)} -->
     <!-- ${endInstructions(...args)} -->
@@ -261,6 +260,6 @@ export const instructions = (...args) => `
 
 export const instructions2 = (...args) => `
   <div class="consent-wrapper mt-3">
-    ${paymentInstructions(...args)} 
+    ${initialInstructions(...args)}
   </div>
 `;
