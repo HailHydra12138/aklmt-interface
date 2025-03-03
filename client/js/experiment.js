@@ -941,7 +941,7 @@ export var launchExperiment = async function (
 
   function populateInstructions () {
     $("#instruction-page").prepend(instructions(tasks, basePayment, condition));
-     $("#instruction2-page").prepend(instructions2(tasks, basePayment, condition))
+    $("#instruction2-page").prepend(instructions2(tasks, basePayment, condition));
   }
 
   function startNextTask() {
@@ -1020,8 +1020,14 @@ export var launchExperiment = async function (
       $("#instruction-page")
         .clearQueue()
         .fadeIn(500, function () {
-          if (skipIntro) $("#start-button").trigger("click");
+          if (skipIntro) $("#next-button").trigger("click");
         });
+      
+      $("#instruction2-page")
+        .clearQueue()
+        .fadeIn(500, function () {
+          if (skipIntro) $("#start-button").trigger("click");
+        });  
     }
   });
 
