@@ -221,12 +221,12 @@ const endInstructions = fromConditionText(
   `
 );
 
-
 export function consent(...args) {
   return `
-    <div class="consent-wrapper">
-      <h4 class="mt-2">Consent Form</h4>
-      
+    <div style='text-align: center; font-size: 22px; font-weight: bold;'>
+      Consent Form
+    </div><br>
+    <div style='text-align: left; font-size: 18px;'>
       <h6><b>Title of Project:</b></h6>
       <p>Exploring overreaction in prediction tasks</p>
       
@@ -252,9 +252,15 @@ export function consent(...args) {
 export const instructions = (...args) => `
   <div class="consent-wrapper mt-3">
     ${initialInstructions(...args)}
-    ${paymentInstructions(...args)}
+    <!-- ${paymentInstructions(...args)} -->
     <!-- ${studyInstructions(...args)} -->
     <!-- ${scoreInstructions(...args)} -->
     <!-- ${endInstructions(...args)} -->
+  </div>
+`;
+
+export const instructions2 = (...args) => `
+  <div class="consent-wrapper mt-3">
+    ${paymentInstructions(...args)} 
   </div>
 `;
