@@ -149,7 +149,6 @@ function resetScroll(element) {
 
 function transitionBetweenTask(taskN, average) {
   $("#instruction-page").clearQueue().fadeOut(500);
-  $("#instruction2-page").clearQueue().fadeOut(500);
   $("#experiment-page").fadeTo(500, 0).delay(200).fadeTo(500, 1);
 }
 
@@ -944,10 +943,6 @@ export var launchExperiment = async function (
     $("#instruction-page").prepend(instructions(tasks, basePayment, condition));
   }
 
-  function populateInstructions2 () {
-    $("#instruction2-page").prepend(instructions2(tasks, basePayment, condition));
-  }
-
   function startNextTask() {
     blockRender = true;
     task = tasks[currentTask];
@@ -1026,12 +1021,6 @@ export var launchExperiment = async function (
         .fadeIn(500, function () {
           if (skipIntro) $("#next-button").trigger("click");
         });
-      
-      $("#instruction2-page")
-        .clearQueue()
-        .fadeIn(500, function () {
-          if (skipIntro) $("#start-button").trigger("click");
-        });  
     }
   });
 
