@@ -943,6 +943,9 @@ export var launchExperiment = async function (
 
   function populateInstructions () {
     $("#instruction-page").prepend(instructions(tasks, basePayment, condition));
+  }
+
+  function populateInstructions2 () {
     $("#instruction2-page").prepend(instructions2(tasks, basePayment, condition));
   }
 
@@ -1004,6 +1007,7 @@ export var launchExperiment = async function (
 
   populateConsent();
   populateInstructions();
+  populateInstructions2();
   showConsent();
 
   $("#consent-button").on("click", function () {
