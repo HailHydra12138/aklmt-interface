@@ -105,10 +105,12 @@ const predictInstructions = (...args) => {
 
 const initialInstructions = (...args) => `
   <p>
-    Thank you very much for your participation. This study will take you about ${estimatedTime(...args)} minutes to complete.
+    You are invited to participate in a research study exploring how people make predictions. To be eligible for participation, individuals must be 18 years of age or older, possess a proficient level of English to comprehend the study materials, and provide informed consent to take part in the research.
+  </p>
+  <p>
+    This study has been reviewed and approved by the Department of Psychology Research Ethics Committee at the University of Warwick.
   </p>
 `;
-
 const paymentInstructions = (...args) => `
   <p>
     You will receive base payment of <b>$${basePayment(...args)}</b>. You will also receive a <b>bonus payment</b>. The typical bonus amount will be around <b>$${estimatedBonus(...args)}</b>, but the precise amount will depend on the accuracy of your predictions. ${additionalTasks(
