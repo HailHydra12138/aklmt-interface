@@ -149,6 +149,7 @@ function resetScroll(element) {
 
 function transitionBetweenTask(taskN, average) {
   $("#instruction-page").clearQueue().fadeOut(500);
+  $("#instruction2-page").clearQueue().fadeOut(500);
   $("#experiment-page").fadeTo(500, 0).delay(200).fadeTo(500, 1);
 }
 
@@ -158,6 +159,7 @@ function showBetweenTaskMessage(condition, taskN, average) {
     <h5>Part ${taskN + 1}</h5><p>${roundTexts?.[condition]?.[taskN] ?? 'Part is starting'}</p>
 `);
   $("#instruction-page").clearQueue().fadeOut(500);
+  $("#instruction2-page").clearQueue().fadeOut(500);
   $("#between-task-page").show().removeClass('hide');
   $("#experiment-page").fadeTo(500, 0);
 }
