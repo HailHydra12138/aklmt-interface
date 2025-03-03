@@ -233,10 +233,10 @@ export function consent(...args) {
       <h6><b>Title of Project:</b></h6>
       <p>Exploring overreaction in prediction tasks</p>
       
-      <h6><b>Name of Researcher(s):</b></h6>
+      <h6><b>Name of Researcher:</b></h6>
       <p>Jenny Zhou</p>
       
-      <h6><b>Name of Supervisors:</b></h6>
+      <h6><b>Name of Supervisor:</b></h6>
       <p>Adam Sanborn</p>
       
       <h6><b>By checking the box below, I confirm that:</b></h6>
