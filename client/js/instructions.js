@@ -160,9 +160,9 @@ const initialInstructions = (...args) => `
 
 const paymentInstructions = (...args) => `
   <p>
-    You will receive base payment of <b>$${basePayment(...args)}</b>. You will also receive a <b>bonus payment</b>. The typical bonus amount will be around <b>$${estimatedBonus(...args)}</b>, but the precise amount will depend on the accuracy of your predictions. ${additionalTasks(
-  ...args
-)}
+    This study will take you around <strong>30 minutes</strong> to complete.<br><br>
+    Your task is to predict the future value of a <strong>random process</strong>. There are <strong>80 rounds</strong> in total: You will be presented 40 realizations in the <strong>first</strong> 40 rounds. For the <strong>next</strong> 40 rounds, you will receive the latest value of the process in every round, and be required to predict the value for the following two rounds. Please note that the random process will be independent of your predictions.<br><br>
+    At the end of the experiment, we will randomly select one of your predictions with equal probability, and you may receive a bonus depending on the accuracy of that prediction. The bonus payment will be at the maximum of <strong>£1.50</strong>, but the precise amount will depend on the <strong>accuracy</strong> of your predictions.<br><br>
   </p>
 `;
 
@@ -215,15 +215,6 @@ const endInstructions = fromConditionText(
   `
 );
 
-export const instructions = (...args) => `
-  <div class="consent-wrapper mt-3">
-    ${initialInstructions(...args)}
-    <!-- ${paymentInstructions(...args)} -->
-    <!-- ${studyInstructions(...args)} -->
-    <!-- ${scoreInstructions(...args)} -->
-    <!-- ${endInstructions(...args)} -->
-  </div>
-`;
 
 export function consent(...args) {
   return `
@@ -251,3 +242,13 @@ export function consent(...args) {
     </div>
   `;
 }
+
+export const instructions = (...args) => `
+  <div class="consent-wrapper mt-3">
+    ${initialInstructions(...args)}
+    ${paymentInstructions(...args)}
+    <!-- ${studyInstructions(...args)} -->
+    <!-- ${scoreInstructions(...args)} -->
+    <!-- ${endInstructions(...args)} -->
+  </div>
+`;
