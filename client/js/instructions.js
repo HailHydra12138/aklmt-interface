@@ -104,58 +104,64 @@ const predictInstructions = (...args) => {
 /* Main paragraphs */
 
 const initialInstructions = (...args) => `
-  <p>
-    <strong>Title of Project</strong>: Exploring overreaction in prediction tasks<br>
-    <strong>Name of Researcher</strong>: Jenny Zhou<br>
-    <strong>Name of Supervisor</strong>: Prof. Adam Sanborn<br>
-    <strong>Invitation</strong><br>
-  </p>
-  <p>
-    You are invited to participate in a research study exploring how people make predictions. To be eligible for participation, individuals must be 18 years of age or older, possess a proficient level of English to comprehend the study materials, and provide informed consent to take part in the research.<br><br>
-    This study has been reviewed and approved by the Department of Psychology Research Ethics Committee at the University of Warwick.<br><br>
-    Please take the time to read the following information carefully. Please get in touch if there is anything that is not clear or if you would like more information.<br><br>
-  </p>
-  <p>
-    <strong>What will happen?</strong><br>
-    You will be asked to make forecasts about future occurrences of a random process using a web-based platform. The task consists of 40 rounds, and within each round, you'll make predictions for the following two rounds. Before the prediction, you'll be shown previous occurrences to help identify underlying patterns. This data may also be used for future research, and subject to your consent at the outset of this research project.<br><br>
-    The study will take approximately 30 minutes.<br><br>
-  </p>
-  <p>
-    <strong>Participant rights</strong><br>
-    Your participation in this study is completely voluntary and choosing not to take part will not affect your rights in any way. You have the right to not answer or respond to any question that is asked of you. If you wish to withdraw from participating in the study, please withdraw at any time by closing the browser without giving any reason. Incomplete experiments will be discarded for analysis, and you can withdraw your data in the debrief by using 'please click here if you do not want your data to be used in this study.'<br><br>
-  </p>
-  <p>
-    <strong>Benefits and risks</strong><br>
-    There are no anticipated risks associated with participating in this study. Your participation in this study will help researchers gain insights into how people make predictions and contribute to improve predictive models.<br><br>
-  </p>
-  <p>
-    <strong>Expenses and payments</strong><br>
-    You will receive base payment of £4.5. You will also receive a bonus payment. The bonus payment will be at the maximum of £1.5, but the precise amount will depend on the accuracy of your predictions.<br><br>
-  </p>
-  <p>
-    <strong>Confidentiality</strong><br>
-    No identifiable data will be collected from you as part of this study. This means that once you finish the experiment, it will not be possible to withdraw this data as your individual responses cannot be identified but nor will it be possible to link your responses to you. If you wish to withdraw your data, please close the browser, or tick the ‘click here if you do not want your data to be used in this study’ option in the debrief.<br><br>
-  </p>
-  <p>
-    <strong>What will happen to the data collected about me?</strong><br>
-    We will use your data in the ways needed to conduct and analyse the research study. We will be using information from you to undertake this study and will act as the data controller for this study. We are committed to protecting the rights of individuals in line with data protection legislation.<br><br>
-    During the data collection period, your data will be stored securely on University of Warwick servers. The data will only be accessed by the researchers and supervisors named above and will not be shared with any other organisations or institutes.<br><br>
-    Your rights to access, change or move your information are limited, as we need to manage your information in specific ways in order for the research to be reliable and accurate. The University of Warwick has in place policies and procedures to keep your data safe.<br><br>
-    Further information can be found in the University's Privacy notice for research here:<br>
-    <a href='https://warwick.ac.uk/services/idc/dataprotection/privacynotices/researchprivacynotice'>https://warwick.ac.uk/services/idc/dataprotection/privacynotices/researchprivacynotice</a> or by contacting the Information and Data Compliance Team at <a href='mailto:GDPR@warwick.ac.uk'>GDPR@warwick.ac.uk</a>.<br><br>
-  </p>
-  <p>
-    <strong>What will happen to the results of the study?</strong><br>
-    The results of this study will be reported in the researchers' project reports. The results may also be reported in a journal publication/conference presentation. The project does not involve or report comparisons or evaluations of individuals; the results will be reported anonymously.<br><br>
-  </p>
-  <p>
-    <strong>Further information/complaints</strong><br>
-    If you have any questions about this study, or if you have a complaint about the way you have been dealt with during the study or any possible harm you might have suffered, please contact the person below, who is the supervisor of this study.<br><br>
-    Prof. Adam Sanborn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: <a href='mailto:a.n.sanborn@warwick.ac.uk'>a.n.sanborn@warwick.ac.uk</a><br>
-    Department of Psychology<br>University of Warwick<br>Coventry<br>CV4 7AL<br><br>
-    If you wish to raise a complaint on how we have handled your personal data, you can contact our Data Protection Officer who will investigate the matter: <a href='mailto:DPO@warwick.ac.uk'>DPO@warwick.ac.uk</a>.<br><br>
-  </p>
-  <div style='text-align: center; font-weight: bold;'>Thank you for taking the time to read this Participant Information Sheet.</div><br><br>
+  <div style='text-align: center; font-size: 22px; font-weight: bold;'>
+    Department of Psychology, University of Warwick<br>
+    Participant Information Sheet
+  </div><br>
+  <div style='text-align: left; font-size: 18px;'>
+    <p>
+      <strong>Title of Project</strong>: Exploring overreaction in prediction tasks<br>
+      <strong>Name of Researcher</strong>: Jenny Zhou<br>
+      <strong>Name of Supervisor</strong>: Prof. Adam Sanborn<br>
+      <strong>Invitation</strong><br>
+    </p>
+    <p>
+      You are invited to participate in a research study exploring how people make predictions. To be eligible for participation, individuals must be 18 years of age or older, possess a proficient level of English to comprehend the study materials, and provide informed consent to take part in the research.<br><br>
+      This study has been reviewed and approved by the Department of Psychology Research Ethics Committee at the University of Warwick.<br><br>
+      Please take the time to read the following information carefully. Please get in touch if there is anything that is not clear or if you would like more information.<br><br>
+    </p>
+    <p>
+      <strong>What will happen?</strong><br>
+      You will be asked to make forecasts about future occurrences of a random process using a web-based platform. The task consists of 40 rounds, and within each round, you'll make predictions for the following two rounds. Before the prediction, you'll be shown previous occurrences to help identify underlying patterns. This data may also be used for future research, and subject to your consent at the outset of this research project.<br><br>
+      The study will take approximately 30 minutes.<br><br>
+    </p>
+    <p>
+      <strong>Participant rights</strong><br>
+      Your participation in this study is completely voluntary and choosing not to take part will not affect your rights in any way. You have the right to not answer or respond to any question that is asked of you. If you wish to withdraw from participating in the study, please withdraw at any time by closing the browser without giving any reason. Incomplete experiments will be discarded for analysis, and you can withdraw your data in the debrief by using 'please click here if you do not want your data to be used in this study.'<br><br>
+    </p>
+    <p>
+      <strong>Benefits and risks</strong><br>
+      There are no anticipated risks associated with participating in this study. Your participation in this study will help researchers gain insights into how people make predictions and contribute to improve predictive models.<br><br>
+    </p>
+    <p>
+      <strong>Expenses and payments</strong><br>
+      You will receive base payment of £4.5. You will also receive a bonus payment. The bonus payment will be at the maximum of £1.5, but the precise amount will depend on the accuracy of your predictions.<br><br>
+    </p>
+    <p>
+      <strong>Confidentiality</strong><br>
+      No identifiable data will be collected from you as part of this study. This means that once you finish the experiment, it will not be possible to withdraw this data as your individual responses cannot be identified but nor will it be possible to link your responses to you. If you wish to withdraw your data, please close the browser, or tick the ‘click here if you do not want your data to be used in this study’ option in the debrief.<br><br>
+    </p>
+    <p>
+      <strong>What will happen to the data collected about me?</strong><br>
+      We will use your data in the ways needed to conduct and analyse the research study. We will be using information from you to undertake this study and will act as the data controller for this study. We are committed to protecting the rights of individuals in line with data protection legislation.<br><br>
+      During the data collection period, your data will be stored securely on University of Warwick servers. The data will only be accessed by the researchers and supervisors named above and will not be shared with any other organisations or institutes.<br><br>
+      Your rights to access, change or move your information are limited, as we need to manage your information in specific ways in order for the research to be reliable and accurate. The University of Warwick has in place policies and procedures to keep your data safe.<br><br>
+      Further information can be found in the University's Privacy notice for research here:<br>
+      <a href='https://warwick.ac.uk/services/idc/dataprotection/privacynotices/researchprivacynotice'>https://warwick.ac.uk/services/idc/dataprotection/privacynotices/researchprivacynotice</a> or by contacting the Information and Data Compliance Team at <a href='mailto:GDPR@warwick.ac.uk'>GDPR@warwick.ac.uk</a>.<br><br>
+    </p>
+    <p>
+      <strong>What will happen to the results of the study?</strong><br>
+      The results of this study will be reported in the researchers' project reports. The results may also be reported in a journal publication/conference presentation. The project does not involve or report comparisons or evaluations of individuals; the results will be reported anonymously.<br><br>
+    </p>
+    <p>
+      <strong>Further information/complaints</strong><br>
+      If you have any questions about this study, or if you have a complaint about the way you have been dealt with during the study or any possible harm you might have suffered, please contact the person below, who is the supervisor of this study.<br><br>
+      Prof. Adam Sanborn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: <a href='mailto:a.n.sanborn@warwick.ac.uk'>a.n.sanborn@warwick.ac.uk</a><br>
+      Department of Psychology<br>University of Warwick<br>Coventry<br>CV4 7AL<br><br>
+      If you wish to raise a complaint on how we have handled your personal data, you can contact our Data Protection Officer who will investigate the matter: <a href='mailto:DPO@warwick.ac.uk'>DPO@warwick.ac.uk</a>.<br><br>
+    </p>
+    <div style='text-align: center; font-weight: bold;'>Thank you for taking the time to read this Participant Information Sheet.</div><br><br>
+  </div>
 `;
 
 const paymentInstructions = (...args) => `
