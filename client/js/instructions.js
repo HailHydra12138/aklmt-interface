@@ -218,10 +218,10 @@ const endInstructions = fromConditionText(
 export const instructions = (...args) => `
   <div class="consent-wrapper mt-3">
     ${initialInstructions(...args)}
-    ${paymentInstructions(...args)}
-    ${studyInstructions(...args)}
-    ${scoreInstructions(...args)}
-    ${endInstructions(...args)}
+    <!-- ${paymentInstructions(...args)} -->
+    <!-- ${studyInstructions(...args)} -->
+    <!-- ${scoreInstructions(...args)} -->
+    <!-- ${endInstructions(...args)} -->
   </div>
 `;
 
