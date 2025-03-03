@@ -199,9 +199,6 @@ export function consent(...args) {
         <li>I confirm that I am over 18 years of age.</li>
         <li>I agree to take part in the above study.</li>
       </ul>
-      
-      <input type="checkbox" name="consent" id="consent" value="consent" required>
-      <label for="consent">I have read and I agree with the points above.</label>
     </div>
   `;
 }
