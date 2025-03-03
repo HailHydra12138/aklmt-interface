@@ -942,6 +942,19 @@ export var launchExperiment = async function (
   function populateInstructions () {
     $("#instruction-page").prepend(instructions(tasks, basePayment, condition));
   }
+  function populateInstructions2() {
+    $("#instructions2-content").html(instructions2(tasks, basePayment, condition));
+}
+
+  function showInstructions2() {
+    $(".page").hide();
+    $("#instructions2-page").show();
+  }
+
+  function showInstructions() {
+    $(".page").hide();
+    $("#instruction-page").show();
+  }
 
   function startNextTask() {
     blockRender = true;
@@ -1001,30 +1014,47 @@ export var launchExperiment = async function (
 
   populateConsent();
   populateInstructions();
+  populateInstructions2();
   showConsent();
 
-  $("#consent-button").on("click", function () {
+$("#consent-button").on("click", function () {
     if (isPreview) {
-      window.alert(
-        "You are currently previewing this HIT. " +
-          "Please accept this HIT before proceeding."
-      );
+        window.alert(
+            "You are currently previewing this HIT. " +
+            "Please accept this HIT before proceeding."
+        );
     } else {
-      var startingTime = new Date();
-      hitData.consentTime = startingTime.getTime();
-      $("#consent-page")
-        .clearQueue()
-        .fadeOut(500);
-
-      $("#instruction-page")
-        .clearQueue()
-        .fadeIn(500, function () {
-          if (skipIntro) $("#next-button").trigger("click");
-        });
+        var startingTime = new Date();
+        hitData.consentTime = startingTime.getTime();
+        
+        $("#consent-page")
+            .clearQueue()
+            .fadeOut(500, function () {
+                $("#instructions2-page")
+                    .clearQueue()
+                    .fadeIn(500);
+            });
     }
+});
+
+$("#instructions2-button").on("click", function () {
+    $("#instructions2-page")
+        .clearQueue()
+        .fadeOut(500, function () {
+            $("#instruction-page")
+                .clearQueue()
+                .fadeIn(500, function () {
+                    if (skipIntro) $("#next-button").trigger("click");
+                });
+        });
+});
+
+  $("#instructions2-button").on("click", function () {
+    $("#instructions2-page").fadeOut(500, function () {
+      showInstructions();
+    });
   });
-
-
+  
   $("#start-button").click(function () {
     if (hitData.startTime) {
       return;
