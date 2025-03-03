@@ -108,7 +108,7 @@ const initialInstructions = (...args) => `
     Department of Psychology, University of Warwick<br>
     Participant Information Sheet
   </div><br>
-  <div style='text-align: left; font-size: 18px;'>
+  <div style='text-align: left; font-size: 16px;'>
     <p>
       <strong>Title of Project</strong>: Exploring overreaction in prediction tasks<br>
       <strong>Name of Researcher</strong>: Jenny Zhou<br>
@@ -226,7 +226,7 @@ export function consent(...args) {
     <div style='text-align: center; font-size: 22px; font-weight: bold;'>
       Consent Form
     </div><br>
-    <div style='text-align: left; font-size: 18px;'>
+    <div style='text-align: left; font-size: 16px;'>
       <h6><b>Title of Project:</b></h6>
       <p>Exploring overreaction in prediction tasks</p>
       
