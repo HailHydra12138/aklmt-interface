@@ -178,25 +178,30 @@ export const instructions = (...args) => `
 
 export function consent(...args) {
   return `
-    var Consentform = {
-      type: jsPsychSurveyHtmlForm,
-      html: '<div style="text-align: center; font-size: 22px; font-weight: bold;">'+
-      "Consent Form<br><br><br>"+
-      "</div>"+
-      '<div style="text-align: left; font-size: 18px;">'+
-        '<strong>Title of Project</strong>: Exploring overreaction in prediction tasks<br>'+
-        '<strong>Name of Researcher(s)</strong>: Jenny Zhou<br>'+
-        '<strong>Name of Supervisors</strong>: Adam Sanborn<br>'+
-        '<strong>By checking the box below, I confirm that</strong>:<br>'+
-        '1. I have read and understand the information sheet for the above study. I have had the opportunity to consider the information, ask questions by contacting the researcher (<a href="mailto:yuqi.zhou@warwick.ac.uk">yuqi.zhou@warwick.ac.uk</a>) and have had these answered satisfactorily.<br>'+
-        '2. I understand that my participation is voluntary and that I am free to withdraw at any time by closing the browser without giving any reason, without my legal rights being affected.<br>'+
-        '3. I understand that my data collected during the study may be looked at by the researcher (Jenny Zhou) and their supervisor (Prof. Adam Sanborn) from the University of Warwick. I give permission for these individuals to access my data.<br>'+
-        '4. I understand that my data may be used in future research.<br>'+
-        '5. I confirm that I am over 18 years of age.<br>'+
-        '6. I agree to take part in the above study.<br><br>'+
-        '<input type="checkbox" name="consent" id="consent" value="consent" required> <label for="consent">I have read and I agree with the points above.</label><br>' +
-        '</div>',
-      button_label: 'Continue',
-    };
+    <div class="consent-wrapper">
+      <h4 class="mt-2">Consent Form</h4>
+      
+      <h6><b>Title of Project:</b></h6>
+      <p>Exploring overreaction in prediction tasks</p>
+      
+      <h6><b>Name of Researcher(s):</b></h6>
+      <p>Jenny Zhou</p>
+      
+      <h6><b>Name of Supervisors:</b></h6>
+      <p>Adam Sanborn</p>
+      
+      <h6><b>By checking the box below, I confirm that:</b></h6>
+      <ul>
+        <li>I have read and understand the information sheet for the above study. I have had the opportunity to consider the information, ask questions by contacting the researcher (<a href="mailto:yuqi.zhou@warwick.ac.uk">yuqi.zhou@warwick.ac.uk</a>) and have had these answered satisfactorily.</li>
+        <li>I understand that my participation is voluntary and that I am free to withdraw at any time by closing the browser without giving any reason, without my legal rights being affected.</li>
+        <li>I understand that my data collected during the study may be looked at by the researcher (Jenny Zhou) and their supervisor (Prof. Adam Sanborn) from the University of Warwick. I give permission for these individuals to access my data.</li>
+        <li>I understand that my data may be used in future research.</li>
+        <li>I confirm that I am over 18 years of age.</li>
+        <li>I agree to take part in the above study.</li>
+      </ul>
+      
+      <input type="checkbox" name="consent" id="consent" value="consent" required>
+      <label for="consent">I have read and I agree with the points above.</label>
+    </div>
   `;
 }
