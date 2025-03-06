@@ -139,7 +139,7 @@ const initialInstructions = (...args) => `
     </p>
     <p>
       <strong>Confidentiality</strong><br>
-      No identifiable data will be collected from you as part of this study. This means that once you finish the experiment, it will not be possible to withdraw this data as your individual responses cannot be identified but nor will it be possible to link your responses to you. If you wish to withdraw your data, please close the browser, or tick the ‘click here if you do not want your data to be used in this study’ option in the debrief.<br><br>
+      No identifiable data will be collected from you as part of this study. This means that once you finish the experiment, it will not be possible to withdraw this data as your individual responses cannot be identified but nor will it be possible to link your responses to you. If you wish to withdraw your data, please close the browser, or tick the 'click here if you do not want your data to be used in this study' option in the debrief.<br><br>
     </p>
     <p>
       <strong>What will happen to the data collected about me?</strong><br>
@@ -167,10 +167,16 @@ const initialInstructions = (...args) => `
 const paymentInstructions = (...args) => `
   <p>
     This study will take you around <strong>20 minutes</strong> to complete.<br><br>
-    Your task is to predict the future value of a <strong>random process</strong>. There are <strong>80 rounds</strong> in total: You will be presented 40 realizations in the <strong>first</strong> 40 rounds. For the <strong>next</strong> 40 rounds, you will receive the latest value of the process in every round, and be required to predict the value for the following two rounds. Please note that the random process will be independent of your predictions.<br><br>
-    At the end of the experiment, we will randomly select one of your predictions with equal probability, and you may receive a bonus depending on the accuracy of that prediction. The bonus payment will be at the maximum of <strong>£1.50</strong>, but the precise amount will depend on the <strong>accuracy</strong> of your predictions.<br><br>
+    Your task is to predict the future value of a <strong>random process</strong>. There are <strong>80 rounds</strong> in total: 
+    You will be presented with 40 realizations in the <strong>first</strong> 40 rounds. For the <strong>next</strong> 40 rounds, 
+    you will receive the latest value of the process in every round, and be required to predict the value for the following two rounds. 
+    Please note that the random process will be independent of your predictions.<br><br>
+    At the end of the experiment, we will randomly select one of your predictions with equal probability, and you may receive a bonus 
+    depending on the accuracy of that prediction. The bonus payment will be at the maximum of <strong>£1.50</strong>, 
+    but the precise amount will depend on the <strong>accuracy</strong> of your predictions.<br><br>
   </p>
-    <!-- Understanding Check -->
+
+  <!-- Understanding Check -->
   <div style="border: 2px solid black; padding: 15px; text-align: left; margin-top: 20px;">
     <p><strong>Understanding Check:</strong></p>
     <p>Please answer the following question by <strong>pressing A or B</strong>. If you answer incorrectly, 
@@ -180,7 +186,6 @@ const paymentInstructions = (...args) => `
     <p>B. Incorrect</p>
     <p><em>(Press A or B to answer)</em></p>
   </div>
-  
   <div style="border: 2px solid black; padding: 15px; text-align: left; margin-top: 20px;">
     <p><strong>Understanding Check:</strong></p>
     <p>Please answer the following question by <strong>pressing A or B</strong>. If you answer incorrectly, 
@@ -283,3 +288,48 @@ export const instructions2 = (...args) => `
     ${initialInstructions(...args)}
   </div>
 `;
+
+// Function to handle understanding checks
+function understandingCheck(stimulus, correctAnswer) {
+  return {
+    type: 'html-keyboard-response',
+    stimulus: stimulus,
+    choices: ['a', 'b'],
+    on_finish: function(data) {
+      if (data.response.toUpperCase() !== correctAnswer) {
+        alert('Incorrect. Please carefully review the instructions. Try Again.');
+        // Re-run the check if the answer is incorrect
+        understandingCheck(stimulus, correctAnswer);
+      }
+    }
+  };
+}
+
+// Define the stimuli for the understanding checks
+var stimulus1 = `
+  <div style="border: 2px solid black; padding: 15px; text-align: left; margin-top: 20px;">
+    <p><strong>Understanding Check:</strong></p>
+    <p>Please answer the following question by <strong>pressing A or B</strong>. If you answer incorrectly, 
+    you will have the chance to review the instructions and try again.</p>
+    <p><strong>Question 1:</strong> We will randomly select one of your predictions with equal probability.</p>
+    <p>A. Correct</p>
+    <p>B. Incorrect</p>
+    <p><em>(Press A or B to answer)</em></p>
+  </div>
+`;
+
+var stimulus2 = `
+  <div style="border: 2px solid black; padding: 15px; text-align: left; margin-top: 20px;">
+    <p><strong>Understanding Check:</strong></p>
+    <p>Please answer the following question by <strong>pressing A or B</strong>. If you answer incorrectly, 
+    you will have the chance to review the instructions and try again.</p>
+    <p><strong>Question 2:</strong> Your predictions will influence the value of the sequence.</p>
+    <p>A. Correct</p>
+    <p>B. Incorrect</p>
+    <p><em>(Press A or B to answer)</em></p>
+  </div>
+`;
+
+// Execute the understanding checks
+understandingCheck(stimulus1, 'A');
+understandingCheck(stimulus2, 'B');
