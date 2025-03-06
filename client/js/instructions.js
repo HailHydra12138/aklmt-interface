@@ -135,7 +135,7 @@ const initialInstructions = (...args) => `
     </p>
     <p>
       <strong>Expenses and payments</strong><br>
-      You will receive base payment of £4.5. You will also receive a bonus payment. The bonus payment will be at the maximum of £1.5, but the precise amount will depend on the accuracy of your predictions.<br><br>
+      You will receive base payment of £3.0. You will also receive a bonus payment. The bonus payment will be at the maximum of £1.5, but the precise amount will depend on the accuracy of your predictions.<br><br>
     </p>
     <p>
       <strong>Confidentiality</strong><br>
@@ -166,7 +166,7 @@ const initialInstructions = (...args) => `
 
 const paymentInstructions = (...args) => `
   <p>
-    This study will take you around <strong>30 minutes</strong> to complete.<br><br>
+    This study will take you around <strong>20 minutes</strong> to complete.<br><br>
     Your task is to predict the future value of a <strong>random process</strong>. There are <strong>80 rounds</strong> in total: You will be presented 40 realizations in the <strong>first</strong> 40 rounds. For the <strong>next</strong> 40 rounds, you will receive the latest value of the process in every round, and be required to predict the value for the following two rounds. Please note that the random process will be independent of your predictions.<br><br>
     At the end of the experiment, we will randomly select one of your predictions with equal probability, and you may receive a bonus depending on the accuracy of that prediction. The bonus payment will be at the maximum of <strong>£1.50</strong>, but the precise amount will depend on the <strong>accuracy</strong> of your predictions.<br><br>
   </p>
