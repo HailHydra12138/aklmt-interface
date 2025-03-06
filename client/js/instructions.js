@@ -187,6 +187,7 @@ const paymentInstructions = (...args) => `
     <p>A. Correct</p>
     <p>B. Incorrect</p>
     <input type="text" id="answer1" maxlength="1" placeholder="Enter A or B" style="width: 50px; text-transform: uppercase;">
+    <br><br>
 
     <!-- Question 2 -->
     <p><strong>Question 2:</strong> Your predictions will influence the value of the sequence.</p>
