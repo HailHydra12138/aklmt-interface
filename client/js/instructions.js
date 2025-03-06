@@ -193,9 +193,6 @@ const paymentInstructions = (...args) => `
     <p>A. Correct</p>
     <p>B. Incorrect</p>
     <input type="text" id="answer2" maxlength="1" placeholder="Enter A or B" style="width: 50px; text-transform: uppercase;">
-
-    <!-- Submit Button -->
-    <button id="submitUnderstandingCheck" class="btn btn-primary">Submit</button>
   </div>
 `;
 
