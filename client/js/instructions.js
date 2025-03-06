@@ -290,20 +290,28 @@ export const instructions2 = (...args) => `
 `;
 
 // Function to handle understanding checks
-function understandingCheck(stimulus, correctAnswer) {
-  return {
-    type: 'html-keyboard-response',
-    stimulus: stimulus,
-    choices: ['a', 'b'],
-    on_finish: function(data) {
-      if (data.response.toUpperCase() !== correctAnswer) {
-        alert('Incorrect. Please carefully review the instructions. Try Again.');
-        // Re-run the check if the answer is incorrect
-        understandingCheck(stimulus, correctAnswer);
-      }
+document.addEventListener("DOMContentLoaded", function () {
+  const submitButton = document.getElementById("submitButton"); // 确保你的HTML有这个按钮
+
+  submitButton.addEventListener("click", function (event) {
+    const answer1 = document.querySelector('input[name="question1"]:checked');
+    const answer2 = document.querySelector('input[name="question2"]:checked');
+
+    if (!answer1 || !answer2) {
+      alert("Please select an answer for both questions.");
+      event.preventDefault(); // 阻止提交
+      return;
     }
-  };
-}
+
+    if (answer1.value !== "A" || answer2.value !== "B") {
+      alert("Incorrect. Please carefully review the instructions. Try Again.");
+      event.preventDefault(); // 阻止进入下一页
+    } else {
+      // 允许进入下一页
+      window.location.href = "next_page.html"; // 替换为你的实际下一页
+    }
+  });
+});
 
 // Define the stimuli for the understanding checks
 var stimulus1 = `
