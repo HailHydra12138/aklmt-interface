@@ -170,6 +170,26 @@ const paymentInstructions = (...args) => `
     Your task is to predict the future value of a <strong>random process</strong>. There are <strong>80 rounds</strong> in total: You will be presented 40 realizations in the <strong>first</strong> 40 rounds. For the <strong>next</strong> 40 rounds, you will receive the latest value of the process in every round, and be required to predict the value for the following two rounds. Please note that the random process will be independent of your predictions.<br><br>
     At the end of the experiment, we will randomly select one of your predictions with equal probability, and you may receive a bonus depending on the accuracy of that prediction. The bonus payment will be at the maximum of <strong>£1.50</strong>, but the precise amount will depend on the <strong>accuracy</strong> of your predictions.<br><br>
   </p>
+    <!-- Understanding Check -->
+  <div style="border: 2px solid black; padding: 15px; text-align: left; margin-top: 20px;">
+    <p><strong>Understanding Check:</strong></p>
+    <p>Please answer the following question by <strong>pressing A or B</strong>. If you answer incorrectly, 
+    you will have the chance to review the instructions and try again.</p>
+    <p><strong>Question 1:</strong> We will randomly select one of your predictions with equal probability.</p>
+    <p>A. Correct</p>
+    <p>B. Incorrect</p>
+    <p><em>(Press A or B to answer)</em></p>
+  </div>
+  
+  <div style="border: 2px solid black; padding: 15px; text-align: left; margin-top: 20px;">
+    <p><strong>Understanding Check:</strong></p>
+    <p>Please answer the following question by <strong>pressing A or B</strong>. If you answer incorrectly, 
+    you will have the chance to review the instructions and try again.</p>
+    <p><strong>Question 2:</strong> Your predictions will influence the value of the sequence.</p>
+    <p>A. Correct</p>
+    <p>B. Incorrect</p>
+    <p><em>(Press A or B to answer)</em></p>
+  </div>
 `;
 
 const studyInstructions = (...args) => {
