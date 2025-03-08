@@ -176,24 +176,24 @@ const paymentInstructions = (...args) => `
     but the precise amount will depend on the <strong>accuracy</strong> of your predictions.<br><br>
   </p>
 
-  <!-- Understanding Check -->
+<!-- Understanding Check -->
   <div style="border: 2px solid black; padding: 15px; text-align: left; margin-top: 20px;">
     <p><strong>Understanding Check:</strong></p>
     <p>Please answer the following question by <strong>pressing A or B</strong>. If you answer incorrectly, 
     you will have the chance to review the instructions and try again.</p>
+
+    <!-- Question 1 -->
     <p><strong>Question 1:</strong> We will randomly select one of your predictions with equal probability.</p>
     <p>A. Correct</p>
     <p>B. Incorrect</p>
-    <p><em>(Press A or B to answer)</em></p>
-  </div>
-  <div style="border: 2px solid black; padding: 15px; text-align: left; margin-top: 20px;">
-    <p><strong>Understanding Check:</strong></p>
-    <p>Please answer the following question by <strong>pressing A or B</strong>. If you answer incorrectly, 
-    you will have the chance to review the instructions and try again.</p>
+    <input type="text" id="answer1" maxlength="1" placeholder=" " style="width: 50px; text-transform: uppercase;">
+    <br><br>
+
+    <!-- Question 2 -->
     <p><strong>Question 2:</strong> Your predictions will influence the value of the sequence.</p>
     <p>A. Correct</p>
     <p>B. Incorrect</p>
-    <p><em>(Press A or B to answer)</em></p>
+    <input type="text" id="answer2" maxlength="1" placeholder=" " style="width: 50px; text-transform: uppercase;">
   </div>
 `;
 
