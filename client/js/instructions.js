@@ -123,7 +123,7 @@ const initialInstructions = (...args) => `
     <p>
       <strong>What will happen?</strong><br>
       You will be asked to make forecasts about future occurrences of a random process using a web-based platform. The task consists of 40 rounds, and within each round, you'll make predictions for the following two rounds. Before the prediction, you'll be shown previous occurrences to help identify underlying patterns. This data may also be used for future research, and subject to your consent at the outset of this research project.<br><br>
-      The study will take approximately 30 minutes.<br><br>
+      The study will take approximately 20 minutes.<br><br>
     </p>
     <p>
       <strong>Participant rights</strong><br>
