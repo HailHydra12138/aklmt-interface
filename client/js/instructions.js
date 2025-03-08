@@ -168,8 +168,8 @@ const paymentInstructions = (...args) => `
   <p>
     This study will take you around <strong>20 minutes</strong> to complete.<br><br>
     Your task is to predict the future value of a <strong>random process</strong>. 
-    You will be presented with 40 realizations first, for the <strong>next</strong> 40 rounds, 
-    you will receive the latest value of the process in every round, and be required to predict the value for the following two rounds. 
+    Initially, you will observe 40 realizations of the process. For the subsequent 40 rounds, 
+    you will receive the most recent value of the process in every round, and be required to predict the value for the following two rounds. 
     Please note that the random process will be independent of your predictions.<br><br>
     At the end of the experiment, we will randomly select one of your predictions with equal probability, and you may receive a bonus 
     depending on the accuracy of that prediction. The bonus payment will be at the maximum of <strong>£1.50</strong>, 
