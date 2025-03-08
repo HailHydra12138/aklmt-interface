@@ -167,8 +167,8 @@ const initialInstructions = (...args) => `
 const paymentInstructions = (...args) => `
   <p>
     This study will take you around <strong>20 minutes</strong> to complete.<br><br>
-    Your task is to predict the future value of a <strong>random process</strong>. There are <strong>80 rounds</strong> in total: 
-    You will be presented with 40 realizations in the <strong>first</strong> 40 rounds. For the <strong>next</strong> 40 rounds, 
+    Your task is to predict the future value of a <strong>random process</strong>. 
+    You will be presented with 40 realizations first, for the <strong>next</strong> 40 rounds, 
     you will receive the latest value of the process in every round, and be required to predict the value for the following two rounds. 
     Please note that the random process will be independent of your predictions.<br><br>
     At the end of the experiment, we will randomly select one of your predictions with equal probability, and you may receive a bonus 
