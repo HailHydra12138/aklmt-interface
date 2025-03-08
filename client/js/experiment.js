@@ -1270,7 +1270,7 @@ $("#instructions2-button").on("click", function () {
       window.setTimeout(() => {
         if (shouldEndExperiment()) {
           $("#experiment-page").fadeOut(500, function () {
-            $("#survey-page").clearQueue().fadeIn(500);
+            $("#final-page").clearQueue().fadeIn(500);
             hitData.surveyTime = new Date().getTime();
           });
         } else {
@@ -1532,7 +1532,6 @@ $("#instructions2-button").on("click", function () {
           }
         }
       });
-
       if (missing) {
         window.alert(
           "Please enter an email and " +

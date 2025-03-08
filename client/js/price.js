@@ -1,3 +1,30 @@
+class SeedRandom {
+  constructor(seed) {
+    this.seed = this.hashSeed(seed);
+    this.next();
+  }
+
+  hashSeed(seed) {
+    if (typeof seed === 'object') {
+      return seed ? [...JSON.stringify(seed)].reduce((a, c) => a + c.charCodeAt(0), 0) : 0;
+    }
+    return typeof seed === 'number' ? seed : 0;
+  }
+
+  next() {
+    this.seed = (this.seed * 16807) % 2147483647;
+    return this.seed / 2147483647;
+  }
+
+  random() {
+    return this.next();
+  }
+
+  randomInt(min, max) {
+    return Math.floor(this.random() * (max - min + 1)) + min;
+  }
+}
+
 function sum(a, b) {
   return a + b;
 }
@@ -53,7 +80,16 @@ module.exports.totalTaskScore = function (taskN, assignment) {
   const actualsArr = assignment.values[taskN];
   const longRunningAveragePredHistArr = assignment.longRunningAveragePredHist[taskN];
   let totalScore = 0;
+  // use the assignment id as random seed, and pick a random round to be the bonus round
+  const seed = assignment.surveyTime
+  const random = new SeedRandom(seed),
+      total_round_idx = task.trainingRounds + task.testingRounds -1,
+      bonusRound = random.randomInt(0, total_round_idx);
+  // console.log("bonus round info", assignment, seed, total_round_idx,  bonusRound);
   for (var roundN = 0; roundN < (task.trainingRounds + task.testingRounds); roundN++) {
+    if (roundN !== bonusRound) {
+      continue;
+    }
     if (roundN >= task.trainingRounds) {
       const predictions = getPredictions(roundN, predictionsArr, task);
       const actuals = getActuals(roundN, actualsArr, task);
