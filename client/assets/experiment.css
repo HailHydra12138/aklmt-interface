@@ -5,6 +5,10 @@ body.is-simulation {
     background: #fbfbfb;
 }
 
+.is-simulation .page {
+    margin-top: 0;
+}
+
 body.is-simulation > div {
     position: relative;
     max-width: 800px;
@@ -29,7 +33,7 @@ html, body, div {
     height: 400px;
     overflow-x: auto;
     overflow-y: auto;
-    padding: 0 15px;
+    padding: 1rem;
     position: absolute;
     right: 0;
     left: 0;
@@ -165,21 +169,23 @@ canvas {
     position: absolute;
     width: auto;
     z-index: 1;
-    display: none;
 }
 
+
+#round-text {
+    top: 5px;
+    display: initial;
+}
 
 #score-text {
     font-weight: bold;
-    top: 5px;
-}
-
-#round-text {
     top: 27px;
+    display: none;
 }
 
 #mode-text {
     top: 49px;
+    display: none;
 }
 
 #prediction-boxes input[type='button'] {

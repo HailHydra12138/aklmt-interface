@@ -1056,6 +1056,10 @@ $("#instructions2-button").on("click", function () {
   });
   
   $("#start-button").click(function () {
+    if ($('#answer1').val() !== "A" || $('#answer2').val() !== "B") {
+      window.alert('Incorrect. Please carefully review the instructions. Try Again.');
+      return;
+    }
     if (hitData.startTime) {
       return;
     }
