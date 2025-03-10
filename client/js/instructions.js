@@ -186,14 +186,22 @@ const paymentInstructions = (...args) => `
     <p><strong>Question 1:</strong> We will randomly select one of your predictions with equal probability.</p>
     <p>A. Correct</p>
     <p>B. Incorrect</p>
-    <input type="text" id="answer1" maxlength="1" placeholder=" " style="width: 50px; text-transform: uppercase;">
+    <select id="answer1" style="width: 50px; text-transform: uppercase;">
+        <option value="" disabled selected> </option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+    </select>
     <br><br>
 
     <!-- Question 2 -->
     <p><strong>Question 2:</strong> Your predictions will influence the value of the sequence.</p>
     <p>A. Correct</p>
     <p>B. Incorrect</p>
-    <input type="text" id="answer2" maxlength="1" placeholder=" " style="width: 50px; text-transform: uppercase;">
+    <select id="answer2" style="width: 50px; text-transform: uppercase;">
+        <option value="" disabled selected> </option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+    </select>
   </div>
 `;
 
