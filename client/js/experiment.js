@@ -27,24 +27,24 @@ function isLastRoundFn(data, task) {
   return data.round === task.testingRounds + task.trainingRounds + 1;
 }
 function showEndStimulus() {
-  const { finalPaymentIndex, finalPayment } = createEndStimulus(payList);
+    const { finalPaymentIndex, finalPayment } = createEndStimulus(payList);
+    
+    console.log("Final Payment Index:", finalPaymentIndex);
+    console.log("Final Payment:", finalPayment);
+    console.log("End Stimulus Content Element:", document.getElementById("end-stimulus-content"));
 
-  document.getElementById("end-stimulus-content").innerHTML = `
-    <div>
-      You have completed the main task.<br><br>  
-      Round <b>${finalPaymentIndex}</b> is selected to calculate your bonus.<br><br>  
-      Your base payment is <b>£4.5</b>, and your bonus payment is <b>£${finalPayment}</b>.<br><br> 
-      <strong>Press the SPACE key to read the Debrief form...</strong>
-    </div>`;
-
-  document.getElementById("experiment-page").style.display = "none";
-  document.getElementById("end-stimulus-page").style.display = "block";
+    document.getElementById("end-stimulus-content").innerHTML = `
+        <div>
+            You have completed the main task.<br><br>  
+            Round <b>${finalPaymentIndex}</b> is selected to calculate your bonus.<br><br>  
+            Your base payment is <b>£4.5</b>, and your bonus payment is <b>£${finalPayment}</b>.<br><br> 
+            <strong>Press the SPACE key to read the Debrief form...</strong>
+        </div>`;
+    
+    document.getElementById("experiment-page").style.display = "none";
+    document.getElementById("end-stimulus-page").style.display = "block";
 }
 
-document.getElementById("end-stimulus-button").addEventListener("click", function() {
-  document.getElementById("end-stimulus-page").style.display = "none";
-  document.getElementById("final-page").style.display = "block";
-});
 
 
 function generateFutureRealizations(data, task) {
