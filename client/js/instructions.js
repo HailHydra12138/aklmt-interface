@@ -203,7 +203,7 @@ const thankInstructions = (...args) => `
 
 const bonusInstructions = (...args) => `
   <p>
-    You will receive base payment of <b>$${basePayment(...args)}</b>. You will also receive a <b>bonus payment</b>. The typical bonus amount will be around <b>$${estimatedBonus(...args)}</b>, but the precise amount will depend on the accuracy of your predictions. ${additionalTasks(
+    You will receive base payment of <b>£${basePayment(...args)}</b>. You will also receive a <b>bonus payment</b>. The typical bonus amount will be around <b>£${estimatedBonus(...args)}</b>, but the precise amount will depend on the accuracy of your predictions. ${additionalTasks(
   ...args
 )}
   </p>
