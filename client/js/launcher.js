@@ -29,7 +29,7 @@ function getPreviewHIT(serverHit) {
 function getOfflineHIT() {
   return {
     skipIntro: getQueryStringParam("skipIntro") === "1",
-    basePayment: Number(getQueryStringParam("basePayment", "1.00")),
+    basePayment: Number(getQueryStringParam("basePayment", "3.00")),
     assignmentId: null,
     hitId: null,
     turkSubmitTo: null,
@@ -41,7 +41,7 @@ function getOfflineHIT() {
 }
 
 function getLocalHIT(conditionId) {
-  let basePayment = consentTexts[conditionId]?.basePayment ??  "1.00"
+  let basePayment = consentTexts[conditionId]?.basePayment ??  "3.00"
 
   return {
     skipIntro: getQueryStringParam("skipIntro") === "1",
