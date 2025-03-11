@@ -160,8 +160,12 @@ function createResults (hitData, tasks) {
 
   result.score = hitData.accumulated.map((data, i) =>
     totalTaskScore(i, { ...result, tasks: tasks })
+                                         
   );
-
+  result.score.forEach((score, roundIndex) => {
+    let bonus = calculateBonus(score, tasks[roundIndex]); // 计算奖金
+    payList.set(roundIndex + 1, bonus); // 存储在 payList，轮数从 1 开始
+  });
   return result;
 }
 
