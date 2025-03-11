@@ -122,6 +122,16 @@ module.exports.getScore = function (roundN, predictionsArr, actualsArr, task) {
   })
 }
 
+module.exports.createEndStimulus = function (payList) {
+  var keysArray = Array.from(payList.keys());
+  var finalPaymentIndex = keysArray[Math.floor(Math.random() * keysArray.length)];
+  var finalPayment = payList.get(finalPaymentIndex);
+
+  return {
+    finalPaymentIndex,
+    finalPayment
+  };
+};
 
 module.exports.getPredictions = getPredictions;
 module.exports.getActuals = getActuals;
