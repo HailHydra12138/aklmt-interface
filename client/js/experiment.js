@@ -2,6 +2,7 @@ import { consent, instructions, instructions2 } from './instructions';
 import { calculateBonus, totalBonus, scoreForPrediction, getForecastModes, totalTaskScore } from './price';
 import { beforeTaskSurvey, afterInstructionsSurvey, shouldRunAfterInstructionsSurvey, shouldRunBeforeTaskSurvey } from './survey';
 import roundTexts from "./round-texts";
+import { createEndStimulus } from "./price.js";
 
 //Audio parametres init
 let hitData = {
@@ -24,6 +25,26 @@ const BLACK = "hsl(0, 0%, 0%)";
 function isLastRoundFn(data, task) {
   return data.round === task.testingRounds + task.trainingRounds + 1;
 }
+function showEndStimulus() {
+  const { finalPaymentIndex, finalPayment } = createEndStimulus(payList);
+
+  document.getElementById("end-stimulus-content").innerHTML = `
+    <div>
+      You have completed the main task.<br><br>  
+      Round <b>${finalPaymentIndex}</b> is selected to calculate your bonus.<br><br>  
+      Your base payment is <b>£4.5</b>, and your bonus payment is <b>£${finalPayment}</b>.<br><br> 
+      <strong>Press the SPACE key to read the Debrief form...</strong>
+    </div>`;
+
+  document.getElementById("experiment-page").style.display = "none";
+  document.getElementById("end-stimulus-page").style.display = "block";
+}
+
+document.getElementById("end-stimulus-button").addEventListener("click", function() {
+  document.getElementById("end-stimulus-page").style.display = "none";
+  document.getElementById("final-page").style.display = "block";
+});
+
 
 function generateFutureRealizations(data, task) {
   const maxForecastMode = Math.max(
