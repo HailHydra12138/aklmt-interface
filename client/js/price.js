@@ -123,15 +123,19 @@ module.exports.getScore = function (roundN, predictionsArr, actualsArr, task) {
 }
 
 module.exports.createEndStimulus = function (payList) {
-  var keysArray = Array.from(payList.keys());
-  var finalPaymentIndex = keysArray[Math.floor(Math.random() * keysArray.length)];
-  var finalPayment = payList.get(finalPaymentIndex);
+var keysArray = Array.from(payList.keys());
 
-  return {
-    finalPaymentIndex,
-    finalPayment
-  };
-};
+    if (keysArray.length === 0) {
+        console.log("Warning: payList is empty, returning default values.");
+        return { finalPaymentIndex: "N/A", finalPayment: "0.00" };
+    }
+
+    var finalPaymentIndex = keysArray[Math.floor(Math.random() * keysArray.length)];
+    var finalPayment = payList.get(finalPaymentIndex) || 0;
+
+    return { finalPaymentIndex, finalPayment };
+}
+
 
 module.exports.getPredictions = getPredictions;
 module.exports.getActuals = getActuals;
