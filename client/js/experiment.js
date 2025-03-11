@@ -27,20 +27,38 @@ function isLastRoundFn(data, task) {
   return data.round === task.testingRounds + task.trainingRounds + 1;
 }
 function showEndStimulus() {
+    console.log("showEndStimulus() function called!");
+
+    // 确保 payList 有内容
+    if (payList.size === 0) {
+        console.error("Error: payList is empty!");
+        document.getElementById("end-stimulus-content").innerHTML = `
+            <div style="color: red;">Error: No payment data available. Please contact the administrator.</div>
+        `;
+        return;
+    }
+
     const { finalPaymentIndex, finalPayment } = createEndStimulus(payList);
-    
+
     console.log("Final Payment Index:", finalPaymentIndex);
     console.log("Final Payment:", finalPayment);
-    console.log("End Stimulus Content Element:", document.getElementById("end-stimulus-content"));
-
-    document.getElementById("end-stimulus-content").innerHTML = `
-        <div>
-            You have completed the main task.<br><br>  
-            Round <b>${finalPaymentIndex}</b> is selected to calculate your bonus.<br><br>  
-            Your base payment is <b>£3.0</b>, and your bonus payment is <b>£${finalPayment}</b>.<br><br> 
-            <strong>Press the SPACE key to read the Debrief form...</strong>
-        </div>`;
     
+    // 确保 end-stimulus-content 存在
+    const endStimulusContent = document.getElementById("end-stimulus-content");
+    if (!endStimulusContent) {
+        console.error("Error: #end-stimulus-content element not found!");
+        return;
+    }
+
+    endStimulusContent.innerHTML = `
+        <div>
+            <p>You have completed the main task.</p>
+            <p>Round <b>${finalPaymentIndex}</b> is selected to calculate your bonus.</p>
+            <p>Your base payment is <b>£3.0</b>, and your bonus payment is <b>£${finalPayment}</b>.</p>
+            <p><strong>Press the SPACE key to read the Debrief form...</strong></p>
+        </div>`;
+
+    // 显示 end-stimulus 页面
     document.getElementById("experiment-page").style.display = "none";
     document.getElementById("end-stimulus-page").style.display = "block";
 }
