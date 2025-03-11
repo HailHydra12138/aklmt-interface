@@ -19,6 +19,7 @@ const GREEN = "hsl(120, 100%, 50%)";
 const BLUE = "hsl(240, 100%, 50%)";
 const BLACK = "hsl(0, 0%, 0%)";
   let blockRender = false;
+const payList = new Map();
 
 // ---[ HELPER FUNCTIONS ]-------------------------------------------------------
 
