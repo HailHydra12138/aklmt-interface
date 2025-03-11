@@ -165,16 +165,6 @@ const initialInstructions = (...args) => `
 `;
 
 const paymentInstructions = (...args) => `
-  <p>
-    This study will take you around <strong>20 minutes</strong> to complete.<br><br>
-    Your task is to predict the future value of a <strong>random process</strong>. 
-    Initially, you will observe 40 realizations of the process. For the subsequent 40 rounds, 
-    you will receive the most recent value of the process in every round, and be required to predict the value for the following two rounds. 
-    Please note that the random process will be independent of your predictions.<br><br>
-    At the end of the experiment, we will randomly select one of your predictions with equal probability, and you may receive a bonus 
-    depending on the accuracy of that prediction. The bonus payment will be at the maximum of <strong>£1.50</strong>, 
-    but the precise amount will depend on the <strong>accuracy</strong> of your predictions.<br><br>
-  </p>
 
 <!-- Understanding Check -->
   <div style="border: 2px solid black; padding: 15px; text-align: left; margin-top: 20px;">
@@ -284,10 +274,10 @@ export function consent(...args) {
 
 export const instructions = (...args) => `
   <div class="consent-wrapper mt-3">
+    ${studyInstructions(...args)}
+    ${scoreInstructions(...args)}
+    ${endInstructions(...args)} 
     ${paymentInstructions(...args)} 
-    <!-- ${studyInstructions(...args)} -->
-    <!-- ${scoreInstructions(...args)} -->
-    <!-- ${endInstructions(...args)} -->
   </div>
 `;
 
