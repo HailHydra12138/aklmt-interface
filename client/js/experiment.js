@@ -37,7 +37,7 @@ function showEndStimulus() {
         <div>
             You have completed the main task.<br><br>  
             Round <b>${finalPaymentIndex}</b> is selected to calculate your bonus.<br><br>  
-            Your base payment is <b>£4.5</b>, and your bonus payment is <b>£${finalPayment}</b>.<br><br> 
+            Your base payment is <b>£3.0</b>, and your bonus payment is <b>£${finalPayment}</b>.<br><br> 
             <strong>Press the SPACE key to read the Debrief form...</strong>
         </div>`;
     
