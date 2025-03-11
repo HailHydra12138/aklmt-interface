@@ -1,6 +1,6 @@
 const incentiveHighFirst = {
   estimatedTime: "40",
-  estimatedBonus: "5.50",
+  estimatedBonus: "1.50",
   endInstructions:
     "At the end of the experiment, we will calculate your total score from part 1 and part 2. In part 1, the bonus you receive will be equal to your total score divided by 400. In part 2, the bonus will be equal to your total score divided by 4,000.",
   partsInstructions:
@@ -9,7 +9,7 @@ const incentiveHighFirst = {
 
 const incentiveLowFirst = {
   estimatedTime: "30",
-  estimatedBonus: "5.50",
+  estimatedBonus: "1.50",
   endInstructions:
     "At the end of the experiment, we will calculate your total score from part 1 and part 2. In part 1, the bonus you receive will be equal to your total score divided by 4,000. In part 2, the bonus will be equal to your total score divided by 400.",
   partsInstructions:
@@ -17,15 +17,15 @@ const incentiveLowFirst = {
 }
 
 const estimatedBonus2p50 = {
-  estimatedBonus: "2.50"
+  estimatedBonus: "1.50"
 }
 
 const estimatedBonus7p50 = {
-  estimatedBonus: "7.50"
+  estimatedBonus: "1.50"
 }
 
 const basePayment5p00 = {
-  basePayment: "5.00"
+  basePayment: "3.00"
 }
 
 
