@@ -165,16 +165,6 @@ const initialInstructions = (...args) => `
 `;
 
 const paymentInstructions = (...args) => `
-  <p>
-    This study will take you around <strong>20 minutes</strong> to complete.<br><br>
-    Your task is to predict the future value of a <strong>random process</strong>. 
-    Initially, you will observe 40 realizations of the process. For the subsequent 40 rounds, 
-    you will receive the most recent value of the process in every round, and be required to predict the value for the following two rounds. 
-    Please note that the random process will be independent of your predictions.<br><br>
-    At the end of the experiment, we will randomly select one of your predictions with equal probability, and you may receive a bonus 
-    depending on the accuracy of that prediction. The bonus payment will be at the maximum of <strong>£1.50</strong>, 
-    but the precise amount will depend on the <strong>accuracy</strong> of your predictions.<br><br>
-  </p>
 
 <!-- Understanding Check -->
   <div style="border: 2px solid black; padding: 15px; text-align: left; margin-top: 20px;">
@@ -203,6 +193,20 @@ const paymentInstructions = (...args) => `
         <option value="B">B</option>
     </select>
   </div>
+`;
+
+const thankInstructions = (...args) => `
+  <p>
+    Thank you very much for your participation. This study will take you about ${estimatedTime(...args)} minutes to complete.
+  </p>
+`;
+
+const bonusInstructions = (...args) => `
+  <p>
+    You will receive base payment of <b>£${basePayment(...args)}</b>. You will also receive a <b>bonus payment</b>. The typical bonus amount will be around <b>£${estimatedBonus(...args)}</b>, but the precise amount will depend on the accuracy of your predictions. ${additionalTasks(
+  ...args
+)}
+  </p>
 `;
 
 const studyInstructions = (...args) => {
@@ -249,7 +253,7 @@ const endInstructions = fromConditionText(
   "endInstructions",
   (...args) => `
     <p>
-      At the end of the experiment, we will calculate your total score in the ${totalRounds(...args)} rounds of predictions. <i>You will receive the bonus payment in US dollars which is equal to your total score divided by ${bonusDivisor(...args)}.</i>
+      At the end of the experiment, we will calculate your total score in the ${totalRounds(...args)} rounds of predictions. <i>You will receive the bonus payment in GBP which is equal to your total score divided by ${bonusDivisor(...args)}.</i>
     </p>
   `
 );
@@ -284,10 +288,12 @@ export function consent(...args) {
 
 export const instructions = (...args) => `
   <div class="consent-wrapper mt-3">
+    ${thankInstructions(...args)}
+    ${bonusInstructions(...args)}
+    ${studyInstructions(...args)}
+    ${scoreInstructions(...args)}
+    ${endInstructions(...args)} 
     ${paymentInstructions(...args)} 
-    <!-- ${studyInstructions(...args)} -->
-    <!-- ${scoreInstructions(...args)} -->
-    <!-- ${endInstructions(...args)} -->
   </div>
 `;
 
