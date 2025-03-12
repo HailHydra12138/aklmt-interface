@@ -21,7 +21,7 @@ const estimatedBonus2p50 = {
 }
 
 const estimatedBonus7p50 = {
-  estimatedBonus: "7.50"
+  estimatedBonus: "1.50"
 }
 
 const basePayment5p00 = {
