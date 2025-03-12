@@ -17,7 +17,7 @@ const incentiveLowFirst = {
 }
 
 const estimatedBonus2p50 = {
-  estimatedBonus: "2.50"
+  estimatedBonus: "1.50"
 }
 
 const estimatedBonus7p50 = {
@@ -25,7 +25,7 @@ const estimatedBonus7p50 = {
 }
 
 const basePayment5p00 = {
-  basePayment: "5.00"
+  basePayment: "3.00"
 }
 
 
