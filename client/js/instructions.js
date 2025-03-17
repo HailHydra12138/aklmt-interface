@@ -253,7 +253,7 @@ const endInstructions = fromConditionText(
   "endInstructions",
   (...args) => `
     <p>
-      At the end of the experiment, we will calculate your total score in the ${totalRounds(...args)} rounds of predictions. <i>You will receive the bonus payment in GBP which is equal to your total score divided by ${bonusDivisor(...args)}.</i>
+      At the end of the experiment, we will randomly select one of your predictions from the ${totalRounds(...args)} rounds and use its corresponding score to calculate your bonus. <i>You will receive the bonus payment in GBP which is equal to your selected score divided by ${bonusDivisor(...args)}.</i>
     </p>
   `
 );
