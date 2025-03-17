@@ -21,15 +21,17 @@ const estimatedBonus2p50 = {
 }
 
 const estimatedBonus7p50 = {
-  estimatedBonus: "7.50"
+  estimatedBonus: "1.50"
 }
 
 const basePayment5p00 = {
-  basePayment: "5.00"
+  basePayment: "3.00"
 }
 
 
 module.exports = {
+  A2: { ...estimatedBonus7p50, ...basePayment5p00 },
+  A5: { ...estimatedBonus7p50, ...basePayment5p00 },
   C1: { ...estimatedBonus7p50, ...basePayment5p00 },
   C2: { ...estimatedBonus7p50, ...basePayment5p00 },
   C3: { ...estimatedBonus7p50, ...basePayment5p00 },
