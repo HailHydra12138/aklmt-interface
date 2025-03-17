@@ -1518,7 +1518,7 @@ $("#survey-page")
           $("#pre-debrief-page").fadeOut(500, function () {
             $("#final-page").fadeIn(500);
           });
-        }, 2000); // `pre-debrief-page` 显示 2 秒后切换
+        }, 2000); 
       });
   });
 
