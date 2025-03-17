@@ -1521,6 +1521,7 @@ $("#survey-page")
         }, 2000); 
       });
   });
+    });
 
 
   const clickFinalButton = new Promise((resolve) => {
