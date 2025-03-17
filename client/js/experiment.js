@@ -1274,7 +1274,7 @@ $("#instructions2-button").on("click", function () {
       window.setTimeout(() => {
         if (shouldEndExperiment()) {
           $("#experiment-page").fadeOut(500, function () {
-            $("#final-page").clearQueue().fadeIn(500);
+            $("#pre-debrief-page").clearQueue().fadeIn(500);
             hitData.surveyTime = new Date().getTime();
           });
         } else {
