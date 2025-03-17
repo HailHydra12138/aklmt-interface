@@ -24,7 +24,7 @@ module.exports = {
       mu: 0,
       sigma: 20,
       seed: null,
-      bonusDivisor: 600,
+      bonusDivisor: 200/3,
       trainingRounds: 0,
       testingRounds: 40,
       entryMode: "graphical",
