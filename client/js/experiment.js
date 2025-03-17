@@ -904,6 +904,8 @@ export var launchExperiment = async function (
   const port = $("#canvas-scroller")[0];
   $("#survey-page").addClass("condition-" + condition);
   $("#survey-page").addClass("condition-group-" + condition[0]);
+  $("#pre-debrief-page").addClass("condition-" + condition);
+  $("#pre-debrief-page").addClass("condition-group-" + condition[0]);
   $("#final-page").addClass("condition-" + condition);
   $("#final-page").addClass("condition-group-" + condition[0]);
   const canvas = $("canvas")[0];
@@ -1506,15 +1508,20 @@ $("#instructions2-button").on("click", function () {
     }
 
     
-
-
-
-    $("#survey-page")
+$("#survey-page")
+  .clearQueue()
+  .fadeOut(500, function () {
+    $("#pre-debrief-page")
       .clearQueue()
-      .fadeOut(500, function () {
-        $("#final-page").clearQueue().fadeIn(500);
+      .fadeIn(500, function () {
+        setTimeout(function () {
+          $("#pre-debrief-page").fadeOut(500, function () {
+            $("#final-page").fadeIn(500);
+          });
+        }, 2000); // `pre-debrief-page` 显示 2 秒后切换
       });
   });
+
 
   const clickFinalButton = new Promise((resolve) => {
     $(".final-button").click(function () {
