@@ -238,7 +238,7 @@ const scoreInstructions = (...args) => `
       ...args
     )}</b> You will receive a score for each prediction you make. The more accurate your predictions are, the higher your score will be. If your prediction is out of certain neighborhood around the actual value, you may receive a score of zero. The specific formula for the score of each prediction is 100 &times; max(0, 1 - |&Delta;| / ${sigma(
   ...args
-)}) where &Delta; is the difference between your prediction and the realized value. For example, if score 90 is randomly selected to calculate your bonus, then you will receive pound as your bonus. 
+)}) where &Delta; is the difference between your prediction and the realized value.  
   </p>
   ${
     args[0][0].predictLongRunning
