@@ -248,23 +248,30 @@ var bootstrap = async function () {
       hit.skipIntro,
       loadConditionId,
     );
-    await $.ajax({
-      url:
-        "hits/" +
-        hit.hitId +
-        "/assignments/" +
-        hit.assignmentId +
-        "/complete?rhoValue=",
-      type: "POST",
-      contentType: "application/json",
-      data: JSON.stringify({
-        ...result,
-        tasks,
-        condition: loadConditionId,
-        isSimulated: true,
-        simulatedStart,
-      }),
-    })
+if (hit.hitId && hit.assignmentId) {
+  await $.ajax({
+    url:
+      "hits/" +
+      hit.hitId +
+      "/assignments/" +
+      hit.assignmentId +
+      "/complete?rhoValue=",
+    type: "POST",
+    contentType: "application/json",
+    data: JSON.stringify({
+      ...result,
+      tasks,
+      condition: loadConditionId,
+      isSimulated: true,
+      simulatedStart,
+    }),
+  }).promise().catch((e) => {
+    fatalError("An error occurred attempting to submit the results.");
+    throw e;
+  });
+} else {
+  console.log("Local mode: skipping submission to backend");
+}
       .promise()
       .catch((e) => {
         fatalError("An error occurred attempting to submit the results.");
