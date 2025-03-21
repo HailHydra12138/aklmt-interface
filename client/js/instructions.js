@@ -110,7 +110,7 @@ const initialInstructions = (...args) => `
   </div><br>
   <div style='text-align: left; font-size: 16px;'>
     <p>
-      <strong>Title of Project</strong>: Number series Prediction Task<br>
+      <strong>Title of Project</strong>: Number Series Prediction Task<br>
       <strong>Name of Researcher</strong>: Jenny Zhou<br>
       <strong>Name of Supervisor</strong>: Prof. Adam Sanborn<br>
       <strong>Invitation</strong><br>
@@ -265,7 +265,7 @@ export function consent(...args) {
     </div><br>
     <div style='text-align: left; font-size: 16px;'>
       <h6><b>Title of Project:</b></h6>
-      <p>Number series Prediction Task</p>
+      <p>Number Series Prediction Task</p>
       
       <h6><b>Name of Researcher:</b></h6>
       <p>Jenny Zhou</p>
