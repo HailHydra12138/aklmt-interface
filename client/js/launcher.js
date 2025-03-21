@@ -265,7 +265,7 @@ if (hit.hitId && hit.assignmentId) {
       isSimulated: true,
       simulatedStart,
     }),
-  }).promise().catch((e) => {
+  }).catch((e) => {
     fatalError("An error occurred attempting to submit the results.");
     throw e;
   });
