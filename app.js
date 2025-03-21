@@ -54,15 +54,24 @@ var PORT = nconf.get("http:port");
 const dbName = nconf.get("db:name")
 const dbUrl = nconf.get("db:url")?.replace("/?", `/${dbName}?`);
 
-mongoose.connect(dbUrl, {
-    useMongoClient: true,
-    auth: {
-        authSource: dbName,
-        user: nconf.get("db:username"),
-        password: nconf.get("db:password"),
-    },
-}).catch(err=>{
-    console.error(err)
+//mongoose.connect(dbUrl, {
+//    useMongoClient: true,
+//    auth: {
+//        authSource: dbName,
+//        user: nconf.get("db:username"),
+//        password: nconf.get("db:password"),
+//    },
+//}).catch(err=>{
+//    console.error(err)
+//});
+
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log("✅ Successfully connected to MongoDB Atlas!");
+}).catch(err => {
+    console.error("❌ MongoDB connection error:", err);
 });
 
 // ---[ EXPRESS SETUP ]----------------------------------------------------------------------------
