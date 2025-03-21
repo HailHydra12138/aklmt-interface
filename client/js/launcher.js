@@ -249,26 +249,28 @@ var bootstrap = async function () {
       loadConditionId,
     );
 if (hit.hitId && hit.assignmentId) {
-  await $.ajax({
-    url:
-      "hits/" +
-      hit.hitId +
-      "/assignments/" +
-      hit.assignmentId +
-      "/complete?rhoValue=",
-    type: "POST",
-    contentType: "application/json",
-    data: JSON.stringify({
-      ...result,
-      tasks,
-      condition: loadConditionId,
-      isSimulated: true,
-      simulatedStart,
-    }),
-  }).catch((e) => {
+  try {
+    await $.ajax({
+      url:
+        "hits/" +
+        hit.hitId +
+        "/assignments/" +
+        hit.assignmentId +
+        "/complete?rhoValue=",
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({
+        ...result,
+        tasks,
+        condition: loadConditionId,
+        isSimulated: true,
+        simulatedStart,
+      }),
+    });
+  } catch (e) {
     fatalError("An error occurred attempting to submit the results.");
     throw e;
-  });
+  }
 } else {
   console.log("Local mode: skipping submission to backend");
 }
