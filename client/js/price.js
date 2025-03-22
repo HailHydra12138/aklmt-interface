@@ -37,7 +37,7 @@ module.exports.totalScore = module.exports.totalExperimentScore;
 module.exports.totalEarnings = function (assignment) {
   return assignment.tasks
     .map((task, i) => {
-      return calculateBonus(module.exports.totalTaskScore(i, assignment), task);
+      return calculateBonus(module.exports.totalTaskScore(i, assignment).totalScore, task);
     })
     .reduce(sum, 0);
 };
@@ -81,7 +81,7 @@ module.exports.totalTaskScore = function (taskN, assignment) {
   const longRunningAveragePredHistArr = assignment.longRunningAveragePredHist[taskN];
   let totalScore = 0;
   // use the assignment id as random seed, and pick a random round to be the bonus round
-  const seed = assignment.surveyTime
+  const seed = assignment._id
   const random = new SeedRandom(seed),
       total_round_idx = task.trainingRounds + task.testingRounds -1,
       bonusRound = random.randomInt(0, total_round_idx);
@@ -102,13 +102,14 @@ module.exports.totalTaskScore = function (taskN, assignment) {
       }
     }
   }
-  return totalScore;
+  console.log("bonus round", seed, bonusRound, totalScore);
+  return {bonusRound, totalScore};
 };
 
 module.exports.totalExperimentScore = function (assignment) {
   let totalScore = 0;
   for (var taskN = 0; taskN < assignment.tasks.length; taskN++) {
-    totalScore += module.exports.totalTaskScore(taskN, assignment);
+    totalScore += module.exports.totalTaskScore(taskN, assignment).totalScore;
   }
   return totalScore;
 };

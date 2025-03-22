@@ -275,11 +275,6 @@ try {
   fatalError("An error occurred attempting to submit the results.");
   throw e;
 }
-      .promise()
-      .catch((e) => {
-        fatalError("An error occurred attempting to submit the results.");
-        throw e;
-      });
     window.alert(
       "Offline mode; data will not be saved (see " +
         "console for data that would be saved)"

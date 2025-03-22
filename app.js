@@ -23,7 +23,7 @@ nconf.argv().env('__');
 nconf.file({ file: __dirname + "/config.json" });
 nconf.defaults({
   db: {
-    url: process.env.ORMONGO_RS_URL,
+    url: process.env.MONGODB_URI,
     username: process.env.DATABASE_USERNAME || "interface",
     name: process.env.DATABASE_NAME || "interface",
     password: process.env.DATABASE_PASSWORD || process.env.AWS_ACCESS_KEY_SECRET,
@@ -41,31 +41,10 @@ var PORT = nconf.get("http:port");
 
 // ---[ DATABASE CONNECTION ]--------------------------------------------------
 
-//mongoose.Promise = global.Promise;
-//mongoose.connect(nconf.get("db:url"), {
-//  useMongoClient: true,
-//  dbName: nconf.get("db:name"),
-//  authSource: nconf.get("db:name"),
-//  auth: {
-//    user: nconf.get("db:username"),
-//    password: nconf.get("db:password"),
-//  }
-//});
-const dbName = nconf.get("db:name")
-const dbUrl = nconf.get("db:url")?.replace("/?", `/${dbName}?`);
+const dbUrl = nconf.get("db:url");
 
-//mongoose.connect(dbUrl, {
-//    useMongoClient: true,
-//    auth: {
-//        authSource: dbName,
-//        user: nconf.get("db:username"),
-//        password: nconf.get("db:password"),
-//    },
-//}).catch(err=>{
-//    console.error(err)
-//});
-console.log("MONGODB_URI", process.env.MONGODB_URI)
-mongoose.connect(process.env.MONGODB_URI, {
+console.log("MONGODB_URI", dbUrl)
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
@@ -392,7 +371,7 @@ api.route("/hits/:hitId/csv/detail").get(function (req, res) {
                 );
                 // Task total
                 row.push(
-                  j === (a.values[t].length - 1) ? totalTaskScore(t, a) : ''
+                  j === (a.values[t].length - 1) ? totalTaskScore(t, a).totalScore : ''
                 );
                 // Experiment total
                 row.push(
@@ -524,9 +503,9 @@ api.route("/hits/:hitId/csv/overview").get(function (req, res) {
               row.push(task.sigma);
               row.push(task.mu);
               row.push(task.forecastMode);
-              row.push(totalTaskScore(taskN, a));
+              row.push(totalTaskScore(taskN, a).totalScore);
               row.push(totalScore(a));
-              row.push("$" + calculateBonus(totalTaskScore(taskN, a), task).toFixed(2));
+              row.push("$" + calculateBonus(totalTaskScore(taskN, a).totalScore, task).toFixed(2));
               row.push("$" + totalEarnings(a).toFixed(2));
               row.push(a.startTime);
               row.push(a.completionTime);

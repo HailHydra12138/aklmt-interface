@@ -93,6 +93,7 @@ function generateFutureRealizations(data, task) {
 
 function createResults (hitData, tasks) {
   const result = {
+    _id: getQueryStringParam("assignmentId"),
     now: new Date().getTime(),
     values: hitData.accumulated.map((data) => data.values),
     predictions: hitData.accumulated.map((data) => {
@@ -135,11 +136,10 @@ function createResults (hitData, tasks) {
     surveyTime: (new Date().getTime() - hitData.surveyTime) / 1000.0,
     surveyData: hitData.surveyData,
   };
-
-  result.score = hitData.accumulated.map((data, i) =>
-    totalTaskScore(i, { ...result, tasks: tasks })
+  result.randomResult = hitData.accumulated.map((data, i) =>
+      totalTaskScore(i, { ...result, tasks: tasks })
   );
-
+  result.score = result.randomResult.map(s=>s.totalScore)
   return result;
 }
 
@@ -1274,8 +1274,13 @@ $("#instructions2-button").on("click", function () {
       window.setTimeout(() => {
         if (shouldEndExperiment()) {
           $("#experiment-page").fadeOut(500, function () {
-            $("#final-page").clearQueue().fadeIn(500);
             hitData.surveyTime = new Date().getTime();
+            const {randomResult} = createResults(hitData, tasks),
+                {bonusRound, totalScore} = randomResult[0],
+                bonus = calculateBonus(totalScore, tasks[bonusRound]);
+            $("#feedback-payment-index").text(bonusRound + 1)
+            $('#feedback-bonus').text(bonus)
+            $("#feedback-page").clearQueue().fadeIn(500);
           });
         } else {
           startNextTask();
@@ -1419,7 +1424,6 @@ $("#instructions2-button").on("click", function () {
     }
   });
 
-
   $("#between-task-page button").click(function () {
     if (shouldRunBeforeTaskSurvey(currentTask - 1, condition)) {
 
@@ -1436,6 +1440,12 @@ $("#instructions2-button").on("click", function () {
     } else {
       startTaskRun();
     }
+  });
+
+  $("#btn-feedback-next").click(function () {
+    $("#feedback-page").fadeOut(500, function () {
+      $("#final-page").clearQueue().fadeIn(500);
+    });
   });
 
   $("#submit-button").click(function () {
