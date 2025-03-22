@@ -64,7 +64,7 @@ const dbUrl = nconf.get("db:url")?.replace("/?", `/${dbName}?`);
 //}).catch(err=>{
 //    console.error(err)
 //});
-
+console.log("MONGODB_URI", process.env.MONGODB_URI)
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
