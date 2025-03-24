@@ -80,12 +80,13 @@ module.exports.totalTaskScore = function (taskN, assignment) {
   const actualsArr = assignment.values[taskN];
   const longRunningAveragePredHistArr = assignment.longRunningAveragePredHist[taskN];
   let totalScore = 0;
-  // use the assignment id as random seed, and pick a random round to be the bonus round
-  const seed = assignment._id
-  const random = new SeedRandom(seed),
-      total_round_idx = task.trainingRounds + task.testingRounds -1,
-      bonusRound = random.randomInt(0, total_round_idx);
-  // console.log("bonus round info", assignment, seed, total_round_idx,  bonusRound);
+
+  // 使用 assignment id 作为随机种子，并选择一个随机回合作为 bonus round
+  const seed = assignment.surveyTime;
+  const random = new SeedRandom(seed);
+  const total_round_idx = task.trainingRounds + task.testingRounds - 1;
+  const bonusRound = random.randomInt(0, total_round_idx);
+
   for (var roundN = 0; roundN < (task.trainingRounds + task.testingRounds); roundN++) {
     if (roundN !== bonusRound) {
       continue;
@@ -93,21 +94,23 @@ module.exports.totalTaskScore = function (taskN, assignment) {
     if (roundN >= task.trainingRounds) {
       const predictions = getPredictions(roundN, predictionsArr, task);
       const actuals = getActuals(roundN, actualsArr, task);
+
       if (predictions.length > 1) {
-        // Randomly generate 0 or 1 if there's 2 predictions 
+        // 生成一个随机索引 0 或 1（如果有两个预测值）
         const randomIndex = new SeedRandom(seed + roundN).randomInt(0, predictions.length - 1);
         totalScore += scoreForPrediction(task, predictions[randomIndex], actuals[randomIndex]);
       } else {
-        // Calculate directly if only 1 prediction
+        // 如果只有一个预测值，直接计算
         totalScore += scoreForPrediction(task, predictions[0], actuals[0]);
       }
+
+      // 如果任务要求长期预测，则计算长期预测得分
       if (task.predictLongRunning) {
         totalScore += scoreForPrediction(task, longRunningAveragePredHistArr[roundN], 0);
       }
     }
   }
-  console.log("bonus round", seed, bonusRound, totalScore);
-  return {bonusRound, totalScore};
+  return totalScore;
 };
 
 module.exports.totalExperimentScore = function (assignment) {
