@@ -271,7 +271,7 @@ export function consent(...args) {
       <p>Jenny Zhou</p>
       
       <h6><b>Name of Supervisor:</b></h6>
-      <p>Adam Sanborn</p>
+      <p>Prof. Adam Sanborn</p>
       
       <h6><b>By checking the box below, I confirm that:</b></h6>
       <ul>
