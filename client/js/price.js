@@ -6,9 +6,17 @@ class SeedRandom {
 
   hashSeed(seed) {
     if (typeof seed === 'object') {
-      return seed ? [...JSON.stringify(seed)].reduce((a, c) => a + c.charCodeAt(0), 0) : 0;
+      return seed
+        ? [...JSON.stringify(seed)].reduce((a, c) => a + c.charCodeAt(0), 0)
+        : 0;
     }
-    return typeof seed === 'number' ? seed : 0;
+    if (typeof seed === 'string') {
+      return [...seed].reduce((a, c) => a + c.charCodeAt(0), 0);
+    }
+    if (typeof seed === 'number') {
+      return seed;
+    }
+    return 0;
   }
 
   next() {
@@ -80,34 +88,30 @@ module.exports.totalTaskScore = function (taskN, assignment) {
   const actualsArr = assignment.values[taskN];
   const longRunningAveragePredHistArr = assignment.longRunningAveragePredHist[taskN];
   let totalScore = 0;
-  // use the assignment id as random seed, and pick a random round to be the bonus round
-  const seed = assignment._id
-  const random = new SeedRandom(seed),
-      total_round_idx = task.trainingRounds + task.testingRounds -1,
-      bonusRound = random.randomInt(0, total_round_idx);
-  // console.log("bonus round info", assignment, seed, total_round_idx,  bonusRound);
-  for (var roundN = 0; roundN < (task.trainingRounds + task.testingRounds); roundN++) {
-    if (roundN !== bonusRound) {
-      continue;
-    }
-    if (roundN >= task.trainingRounds) {
-      const predictions = getPredictions(roundN, predictionsArr, task);
-      const actuals = getActuals(roundN, actualsArr, task);
-      totalScore += predictions.map((pred, i) => {
-        return scoreForPrediction(task, pred, actuals[i]);
-      }).reduce(sum, 0);
 
+  // 使用字符串形式的 assignment id 作为种子
+  const seed = assignment._id.toString();
+  const random = new SeedRandom(seed);
+  const totalRounds = task.trainingRounds + task.testingRounds;
+  const bonusRound = random.randomInt(0, totalRounds - 1);
 
+  for (let roundN = 0; roundN < totalRounds; roundN++) {
+    if (roundN !== bonusRound || roundN < task.trainingRounds) continue;
 
+    const predictions = getPredictions(roundN, predictionsArr, task);
+    const actuals = getActuals(roundN, actualsArr, task);
 
+    totalScore += predictions.map((pred, i) =>
+      scoreForPrediction(task, pred, actuals[i])
+    ).reduce(sum, 0);
 
-      if (task.predictLongRunning) {
-        totalScore += scoreForPrediction(task, longRunningAveragePredHistArr[roundN], 0);
-      }
+    if (task.predictLongRunning && longRunningAveragePredHistArr?.[roundN] != null) {
+      totalScore += scoreForPrediction(task, longRunningAveragePredHistArr[roundN], 0);
     }
   }
+
   console.log("bonus round", seed, bonusRound, totalScore);
-  return {bonusRound, totalScore};
+  return { bonusRound, totalScore };
 };
 
 module.exports.totalExperimentScore = function (assignment) {
