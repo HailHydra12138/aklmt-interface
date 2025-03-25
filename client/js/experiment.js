@@ -1528,7 +1528,7 @@ $("#instructions2-button").on("click", function () {
 
   const clickFinalButton = new Promise((resolve) => {
     $(".final-button").click(function () {
-
+      hitData.surveyData.push('do_not_want_be_used' + "=" + document.getElementById('confirmCheckbox').checked);
       let missing = false;
 
       $("#final-page .survey-data").each(function (i, el) {

@@ -381,6 +381,7 @@ api.route("/hits/:hitId/csv/detail").get(function (req, res) {
                 row.push(
                   phase === "Training" || phase === "Testing" ? last : ""
                 );
+                row.push(a.surveyData)
               }
             }
           }
