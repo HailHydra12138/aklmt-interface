@@ -1277,7 +1277,7 @@ $("#instructions2-button").on("click", function () {
             hitData.surveyTime = new Date().getTime();
             const {randomResult} = createResults(hitData, tasks),
                 {bonusRound, totalScore} = randomResult[0],
-                bonus = calculateBonus(totalScore, tasks[bonusRound]);
+                bonus = calculateBonus(totalScore, tasks[0]);
             $("#feedback-payment-index").text(bonusRound + 1)
             $('#feedback-bonus').text(bonus)
             $("#feedback-page").clearQueue().fadeIn(500);
