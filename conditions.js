@@ -102,7 +102,7 @@ module.exports = {
       seed: null,
       bonusDivisor: 66,
       trainingRounds: 0,
-      testingRounds: 40,
+      testingRounds: 10,
       entryMode: "graphical",
       forecastMode: "1+2",
       showGrayDots: true,
