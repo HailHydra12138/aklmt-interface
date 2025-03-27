@@ -84,7 +84,7 @@ module.exports.totalTaskScore = function (taskN, assignment) {
   let totalScore = 0;
 
   // 使用字符串形式的 assignment id 作为种子
-  const seed = assignment._id?.toString() || 'defaultSeed';
+  const seed = assignment._id?.toString() + Date.now();
   const random = new SeedRandom(seed);
   const totalRounds = task.trainingRounds + task.testingRounds;
   const bonusRound = random.randomInt(0, totalRounds - 1);
