@@ -90,7 +90,7 @@ module.exports.totalTaskScore = function (taskN, assignment) {
   let totalScore = 0;
 
   const seed = Date.now() + Math.random();  
-  const random = new SeedRandom(seed);
+  const seed = assignment._id?.toString() || 'defaultSeed';
   const totalRounds = task.trainingRounds + task.testingRounds;
   const bonusRound = random.randomInt(0, totalRounds - 1);
 
