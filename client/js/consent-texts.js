@@ -32,6 +32,8 @@ const basePayment5p00 = {
 module.exports = {
   A2: { ...estimatedBonus7p50, ...basePayment5p00 },
   A5: { ...estimatedBonus7p50, ...basePayment5p00 },
+  A3: { ...estimatedBonus7p50, ...basePayment5p00 },
+  A6: { ...estimatedBonus7p50, ...basePayment5p00 },
   C1: { ...estimatedBonus7p50, ...basePayment5p00 },
   C2: { ...estimatedBonus7p50, ...basePayment5p00 },
   C3: { ...estimatedBonus7p50, ...basePayment5p00 },
