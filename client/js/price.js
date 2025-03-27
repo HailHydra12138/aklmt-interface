@@ -5,19 +5,13 @@ class SeedRandom {
   }
 
   hashSeed(seed) {
-    if (typeof seed === 'object') {
-      return seed
-        ? [...JSON.stringify(seed)].reduce((a, c) => a + c.charCodeAt(0), 0)
-        : 0;
-    }
-    if (typeof seed === 'string') {
-      return [...seed].reduce((a, c) => a + c.charCodeAt(0), 0);
-    }
-    if (typeof seed === 'number') {
-      return seed;
-    }
-    return 0;
+  if (typeof seed !== 'string') seed = JSON.stringify(seed);
+  let hash = 5381;
+  for (let i = 0; i < seed.length; i++) {
+    hash = (hash * 33) ^ seed.charCodeAt(i);
   }
+  return Math.abs(hash);
+}
 
   next() {
     this.seed = (this.seed * 16807) % 2147483647;
