@@ -90,7 +90,7 @@ module.exports.totalTaskScore = function (taskN, assignment) {
   let totalScore = 0;
 
   // 使用字符串形式的 assignment id 作为种子
-  const seed = assignment._id.toString();
+  const seed = assignment._id?.toString() || 'defaultSeed';
   const random = new SeedRandom(seed);
   const totalRounds = task.trainingRounds + task.testingRounds;
   const bonusRound = random.randomInt(0, totalRounds - 1);
@@ -100,11 +100,14 @@ module.exports.totalTaskScore = function (taskN, assignment) {
 
     const predictions = getPredictions(roundN, predictionsArr, task);
     const actuals = getActuals(roundN, actualsArr, task);
-
-    totalScore += predictions.map((pred, i) =>
-      scoreForPrediction(task, pred, actuals[i])
-    ).reduce(sum, 0);
-
+    if (predictions.length > 1) {
+      // Randomly generate 0 or 1 if there's 2 predictions
+      const randomIndex = new SeedRandom(seed + roundN).randomInt(0, predictions.length - 1);
+      totalScore += scoreForPrediction(task, predictions[randomIndex], actuals[randomIndex]);
+    } else {
+      // Calculate directly if only 1 prediction
+      totalScore += scoreForPrediction(task, predictions[0], actuals[0]);
+    }
     if (task.predictLongRunning && longRunningAveragePredHistArr?.[roundN] != null) {
       totalScore += scoreForPrediction(task, longRunningAveragePredHistArr[roundN], 0);
     }
