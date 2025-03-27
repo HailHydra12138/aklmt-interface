@@ -89,7 +89,6 @@ module.exports.totalTaskScore = function (taskN, assignment) {
   const longRunningAveragePredHistArr = assignment.longRunningAveragePredHist[taskN];
   let totalScore = 0;
 
-  const seed = Date.now() + Math.random();  
   const seed = assignment._id?.toString() || 'defaultSeed';
   const totalRounds = task.trainingRounds + task.testingRounds;
   const bonusRound = random.randomInt(0, totalRounds - 1);
