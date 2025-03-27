@@ -89,8 +89,7 @@ module.exports.totalTaskScore = function (taskN, assignment) {
   const longRunningAveragePredHistArr = assignment.longRunningAveragePredHist[taskN];
   let totalScore = 0;
 
-  // 使用字符串形式的 assignment id 作为种子
-  const seed = assignment._id?.toString() || 'defaultSeed';
+  const seed = Date.now() + Math.random();  
   const random = new SeedRandom(seed);
   const totalRounds = task.trainingRounds + task.testingRounds;
   const bonusRound = random.randomInt(0, totalRounds - 1);
