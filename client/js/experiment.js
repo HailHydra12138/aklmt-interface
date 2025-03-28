@@ -245,9 +245,6 @@ export var fatalError = function (message) {
 // ---[ RENDERING CODE ]-------------------------------------------------------
 
 var render = function (canvas, task, data, condition) {
- // if (Math.abs(data.yCenter) < 70){
-    data.yCenter = 0;
- // }
   if (blockRender) {
     return;
   }
