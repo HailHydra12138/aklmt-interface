@@ -245,10 +245,10 @@ export var fatalError = function (message) {
 // ---[ RENDERING CODE ]-------------------------------------------------------
 
 var render = function (canvas, task, data, condition) {
+    data.yCenter = 0;
   if (blockRender) {
     return;
   }
-
   const port = $("#canvas-scroller")[0];
   const maxForecastMode = Math.max(
     ...task.forecastMode.split("+").map((x) => parseInt(x))
